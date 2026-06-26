@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RepNoxx — Premium Fitness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000000;
+  --bg2:#0f0f0f;
+  --bg3:#1a1a1a;
+  --card:#141414;
+  --border:rgba(255,255,255,0.08);
+  --accent:#ff4d00;
+  --text:#ffffff;
+  --text2:#999999;
+  --text3:#666666;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all 0.3s}
+.nav.scrolled{padding:14px 48px;background:rgba(0,0,0,0.95)}
+.nav-brand{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;color:var(--text)}
+.nav-brand span{color:var(--accent)}
+.nav-menu{display:flex;gap:32px;align-items:center}
+.nav-menu a{font-size:0.85rem;font-weight:500;color:var(--text2);letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s}
+.nav-menu a:hover{color:var(--text)}
+.nav-cta{padding:10px 24px;background:var(--accent);color:#fff;border-radius:6px;font-size:0.8rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;transition:all 0.2s}
+.nav-cta:hover{background:#ff6622;transform:translateY(-1px)}
+.nav-insta{display:flex;align-items:center;gap:6px;color:var(--text2);transition:color 0.2s}
+.nav-insta:hover{color:var(--text)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{width:24px;height:2px;background:var(--text);transition:0.3s}
+.mobile-nav{display:none;position:fixed;inset:0;z-index:999;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mobile-nav.active{display:flex}
+.mobile-nav a{font-size:1.2rem;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:2px}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 48px 80px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(255,77,0,0.08) 0%,transparent 60%),radial-gradient(ellipse at 30% 80%,rgba(255,77,0,0.04) 0%,transparent 40%)}
+.hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:100px 100px}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:0.4;animation:heroGlow 10s ease-in-out infinite}
+.hero-glow.g1{top:-200px;right:-100px;background:rgba(255,77,0,0.15)}
+.hero-glow.g2{bottom:-200px;left:-100px;background:rgba(255,77,0,0.08);animation-delay:5s}
+@keyframes heroGlow{0%,100%{transform:scale(1);opacity:0.3}50%{transform:scale(1.2);opacity:0.5}}
+.hero-content{position:relative;z-index:2;max-width:800px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(255,77,0,0.1);border:1px solid rgba(255,77,0,0.2);border-radius:100px;font-size:0.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:32px;animation:fadeUp 0.8s ease 0.2s both}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:700;line-height:1;letter-spacing:-3px;margin-bottom:24px;animation:fadeUp 0.8s ease 0.4s both}
+.hero-title .highlight{color:var(--accent)}
+.hero-desc{font-size:1.1rem;color:var(--text2);line-height:1.7;max-width:500px;margin-bottom:40px;animation:fadeUp 0.8s ease 0.6s both}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp 0.8s ease 0.8s both}
+.btn{padding:14px 32px;border-radius:8px;font-size:0.9rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;border:none}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 24px rgba(255,77,0,0.3)}
+.btn-primary:hover{background:#ff6622;transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,77,0,0.4)}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--text2);background:rgba(255,255,255,0.03)}
+.hero-stats{display:flex;gap:48px;margin-top:64px;animation:fadeUp 0.8s ease 1s both}
+.hero-stat{border-left:2px solid var(--border);padding-left:20px}
+.hero-stat-num{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--text);line-height:1}
+.hero-stat-label{font-size:0.8rem;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS */
+.section{padding:120px 48px;position:relative}
+.section:nth-child(even){background:var(--bg2)}
+.section-header{text-align:center;margin-bottom:64px}
+.section-label{font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-1px}
+.section-desc{color:var(--text2);max-width:500px;margin:16px auto 0;font-size:0.95rem;line-height:1.6}
+
+/* TRACKER */
+.tracker-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative}
+.tracker-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.tracker-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:900px;margin:0 auto}
+.tracker-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;transition:all 0.3s;position:relative;overflow:hidden}
+.tracker-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);opacity:0.5}
+.tracker-card:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-2px)}
+.tracker-label{font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text2);margin-bottom:16px}
+.tracker-value{font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.tracker-unit{font-size:1rem;color:var(--text2);margin-left:4px}
+.tracker-bar{width:100%;height:6px;background:var(--bg3);border-radius:3px;margin-top:20px;overflow:hidden;position:relative}
+.tracker-bar-fill{height:100%;border-radius:3px;transition:width 0.8s cubic-bezier(0.16,1,0.3,1);position:relative}
+.tracker-bar-fill.cal{background:linear-gradient(90deg,var(--accent),#ff6622)}
+.tracker-bar-fill.protein{background:linear-gradient(90deg,#00d4ff,#00a8cc)}
+.tracker-meta{display:flex;justify-content:space-between;margin-top:12px;font-size:0.8rem;color:var(--text3)}
+.tracker-input-row{display:flex;gap:8px;margin-top:20px}
+.tracker-input{flex:1;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;outline:none;transition:border-color 0.2s}
+.tracker-input:focus{border-color:var(--accent)}
+.tracker-btn{padding:12px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:0.85rem;cursor:pointer;transition:all 0.2s}
+.tracker-btn:hover{background:#ff6622}
+.tracker-goals{display:flex;gap:24px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+.goal-group{display:flex;align-items:center;gap:8px}
+.goal-group label{font-size:0.75rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
+.goal-input{width:80px;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--accent);font-family:'Space Grotesk',sans-serif;font-size:0.9rem;font-weight:600;text-align:center;outline:none}
+.tracker-reset{margin-top:16px;padding:8px 20px;background:transparent;border:1px solid rgba(255,77,77,0.2);color:#ff4444;border-radius:6px;cursor:pointer;font-size:0.8rem;font-weight:500;transition:all 0.2s}
+.tracker-reset:hover{background:rgba(255,77,77,0.05);border-color:rgba(255,77,77,0.4)}
+
+/* EXERCISE CARDS */
+.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:40px;flex-wrap:wrap}
+.tab{padding:10px 20px;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--text2);cursor:pointer;font-size:0.8rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;transition:all 0.2s}
+.tab.active,.tab:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.exercise-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;max-width:1200px;margin:0 auto}
+.exercise-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all 0.3s;position:relative}
+.exercise-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height 0.3s;border-radius:12px 0 0 12px}
+.exercise-card:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-2px)}
+.exercise-card:hover::before{height:100%}
+.card-tag{display:inline-block;padding:4px 10px;border-radius:4px;font-size:0.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.tag-chest{background:rgba(255,77,0,0.1);color:#ff6622}
+.tag-back{background:rgba(0,212,255,0.1);color:#00d4ff}
+.tag-legs{background:rgba(255,200,0,0.1);color:#ffc800}
+.tag-shoulders{background:rgba(160,100,255,0.1);color:#a064ff}
+.tag-arms{background:rgba(255,100,150,0.1);color:#ff6496}
+.tag-core{background:rgba(100,200,255,0.1);color:#64c8ff}
+.tag-full{background:rgba(255,77,0,0.1);color:#ff6622}
+.tag-cardio{background:rgba(255,80,80,0.1);color:#ff5050}
+.tag-upper{background:rgba(255,100,150,0.1);color:#ff6496}
+.tag-lower{background:rgba(255,200,0,0.1);color:#ffc800}
+.card-name{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:600;margin-bottom:8px}
+.card-detail{color:var(--text2);font-size:0.85rem;line-height:1.5;margin-bottom:12px}
+.card-sets{display:flex;gap:8px;margin-bottom:16px}
+.set-badge{padding:4px 10px;background:var(--bg3);border-radius:4px;font-size:0.7rem;color:var(--text2);font-weight:600}
+.video-btn{display:flex;align-items:center;gap:10px;width:100%;padding:12px 16px;background:rgba(255,77,0,0.05);border:1px solid rgba(255,77,0,0.15);border-radius:8px;cursor:pointer;transition:all 0.2s;color:var(--text);font-size:0.8rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+.video-btn:hover{background:rgba(255,77,0,0.1);border-color:rgba(255,77,0,0.3)}
+.play-icon{width:28px;height:28px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* DIET */
+.diet-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.diet-tabs{display:flex;gap:12px;justify-content:center;margin-bottom:40px}
+.diet-tab{padding:12px 28px;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text2);transition:all 0.2s;text-transform:uppercase;letter-spacing:0.5px}
+.diet-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.diet-plan{display:none}.diet-plan.active{display:block;animation:fadeIn 0.4s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.meal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;max-width:1100px;margin:0 auto}
+.meal-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all 0.3s}
+.meal-card:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.meal-time{font-size:0.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.meal-name{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:12px}
+.meal-items{list-style:none}
+.meal-items li{padding:6px 0;color:var(--text2);font-size:0.85rem;border-bottom:1px solid var(--border)}
+.meal-items li:last-child{border-bottom:none}
+.meal-macros{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.macro{padding:4px 10px;border-radius:4px;font-size:0.7rem;font-weight:700;letter-spacing:0.5px}
+.macro-cal{background:rgba(255,77,0,0.1);color:var(--accent)}
+.macro-prot{background:rgba(0,212,255,0.1);color:#00d4ff}
+.macro-carb{background:rgba(255,200,0,0.1);color:#ffc800}
+.macro-fat{background:rgba(160,100,255,0.1);color:#a064ff}
+
+/* GUIDE */
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+.guide-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;transition:all 0.3s;position:relative;overflow:hidden}
+.guide-card:hover{border-color:rgba(255,255,255,0.15);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.guide-num{position:absolute;top:16px;right:20px;font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:700;color:rgba(255,255,255,0.03)}
+.guide-card h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:10px}
+.guide-card p{color:var(--text2);font-size:0.85rem;line-height:1.6}
+.guide-card ul{list-style:none;margin-top:12px}
+.guide-card ul li{padding:4px 0;color:var(--text2);font-size:0.85rem}
+.guide-card ul li::before{content:'— ';color:var(--accent)}
+
+/* FOOTER */
+.footer{padding:60px 48px 30px;border-top:1px solid var(--border);text-align:center}
+.footer-brand{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:12px}
+.footer-brand span{color:var(--accent)}
+.footer-desc{color:var(--text2);font-size:0.9rem;margin-bottom:24px}
+.footer-insta{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--accent);color:#fff;border-radius:8px;font-size:0.85rem;font-weight:600;transition:all 0.2s}
+.footer-insta:hover{background:#ff6622;transform:translateY(-2px)}
+.footer-copy{color:var(--text3);font-size:0.75rem;margin-top:24px;letter-spacing:0.5px}
+
+/* ADMIN */
+.admin-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center}
+.admin-box{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:40px;max-width:600px;width:90%;max-height:85vh;overflow-y:auto;position:relative}
+.admin-box h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;margin-bottom:24px}
+.admin-login{text-align:center}
+.admin-login input{padding:12px 20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:1rem;text-align:center;width:200px;outline:none;letter-spacing:8px}
+.admin-login button{display:block;margin:16px auto 0;padding:10px 28px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600}
+.admin-section{margin-bottom:24px}
+.admin-section h3{font-size:0.8rem;font-weight:600;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.admin-field{display:flex;gap:10px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+.admin-field label{color:var(--text2);font-size:0.8rem;min-width:100px}
+.admin-field input,.admin-field textarea{flex:1;padding:8px 12px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:0.85rem;outline:none}
+.admin-save{padding:10px 24px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.85rem;margin-top:12px}
+.admin-close{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--text2);font-size:1.3rem;cursor:pointer}
+.admin-reset-pw{margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.admin-video-list{max-height:300px;overflow-y:auto;margin-top:8px}
+.admin-video-item{display:flex;gap:8px;align-items:center;margin-bottom:6px;padding:6px 8px;background:var(--bg);border-radius:6px;border:1px solid var(--border)}
+.admin-video-item label{color:var(--text2);font-size:0.75rem;min-width:140px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.admin-video-item input{flex:1;padding:6px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--text);font-size:0.8rem;outline:none}
+
+/* VIDEO MODAL */
+.video-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center}
+.video-modal-box{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;max-width:800px;width:92%;position:relative}
+.video-modal-close{position:absolute;top:-12px;right:-8px;background:var(--accent);color:#fff;border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;z-index:2}
+.video-modal-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:16px}
+.video-modal-player{position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#000}
+.video-modal-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+
+/* SCROLL REVEAL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.9);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.active{opacity:1;transform:scale(1)}
+
+/* STAGGER ANIMATIONS */
+.stagger-item{opacity:0;transform:translateY(30px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.stagger-item.active{opacity:1;transform:translateY(0)}
+
+/* LOADING SCREEN */
+.loader{position:fixed;inset:0;z-index:99999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity 0.5s,visibility 0.5s}
+.loader.hidden{opacity:0;visibility:hidden}
+.loader-content{text-align:center}
+.loader-logo{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--text);margin-bottom:20px;animation:loaderPulse 1.5s ease infinite}
+.loader-bar{width:200px;height:2px;background:var(--bg3);border-radius:2px;overflow:hidden;margin:0 auto}
+.loader-bar-fill{height:100%;background:var(--accent);animation:loaderFill 1.5s ease forwards}
+@keyframes loaderPulse{0%,100%{opacity:1}50%{opacity:0.5}}
+@keyframes loaderFill{0%{width:0}100%{width:100%}}
+
+/* MAGNETIC BUTTON EFFECT */
+.btn{position:relative;overflow:hidden;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
+.btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,0.1);transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s}
+.btn:hover::before{width:300px;height:300px}
+.btn:active{transform:scale(0.98)}
+
+/* CARD 3D HOVER */
+.exercise-card,.tracker-card,.meal-card,.guide-card{transition:all 0.4s cubic-bezier(0.16,1,0.3,1);transform-style:preserve-3d;perspective:1000px}
+.exercise-card:hover,.tracker-card:hover,.meal-card:hover,.guide-card:hover{transform:translateY(-4px) rotateX(2deg)}
+
+/* PARALLAX HERO */
+.hero-bg{transition:transform 0.1s ease-out}
+
+/* TEXT REVEAL ANIMATION */
+.hero-title,.section-title{overflow:hidden}
+.hero-title span,.section-title span{display:inline-block;animation:textReveal 0.8s cubic-bezier(0.16,1,0.3,1) forwards}
+@keyframes textReveal{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+
+/* GRADIENT BORDER ANIMATION */
+.tracker-card,.exercise-card{position:relative}
+.tracker-card::after,.exercise-card::after{content:'';position:absolute;inset:-1px;border-radius:inherit;background:linear-gradient(45deg,var(--accent),transparent,var(--accent));opacity:0;transition:opacity 0.3s;z-index:-1;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;padding:1px}
+.tracker-card:hover::after,.exercise-card:hover::after{opacity:0.3}
+
+/* FLOATING ANIMATION */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-tag{animation:fadeUp 0.8s ease 0.2s both,float 6s ease-in-out infinite 1s}
+
+/* PULSE RING */
+.hero-tag::before{animation:pulse 2s ease infinite,ringExpand 2s ease infinite}
+@keyframes ringExpand{0%{box-shadow:0 0 0 0 rgba(255,77,0,0.4)}100%{box-shadow:0 0 0 10px rgba(255,77,0,0)}}
+
+/* SMOOTH SCROLL INDICATOR */
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);animation:scrollBounce 2s ease infinite}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+/* AI CHATBOT */
+.chatbot-fab{position:fixed;bottom:28px;right:28px;z-index:9000;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#ff6622);border:none;cursor:pointer;box-shadow:0 4px 24px rgba(255,77,0,0.4),0 0 0 0 rgba(255,77,0,0.3);display:flex;align-items:center;justify-content:center;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);animation:fabPulse 3s ease infinite}
+.chatbot-fab:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(255,77,0,0.5)}
+.chatbot-fab svg{width:28px;height:28px;fill:#fff;transition:transform 0.3s}
+.chatbot-fab.open svg{transform:rotate(90deg)}
+@keyframes fabPulse{0%,100%{box-shadow:0 4px 24px rgba(255,77,0,0.4),0 0 0 0 rgba(255,77,0,0.3)}50%{box-shadow:0 4px 24px rgba(255,77,0,0.4),0 0 0 12px rgba(255,77,0,0)}}
+.chatbot-window{position:fixed;bottom:100px;right:28px;z-index:8999;width:400px;max-height:620px;background:rgba(15,15,15,0.97);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.05);display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(20px) scale(0.95);transition:all 0.4s cubic-bezier(0.16,1,0.3,1)}
+.chatbot-window.open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.chatbot-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-shrink:0}
+.chatbot-avatar{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ff6622);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chatbot-avatar svg{width:22px;height:22px;fill:#fff}
+.chatbot-header-info h3{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:2px}
+.chatbot-header-info p{font-size:0.7rem;color:var(--text2);display:flex;align-items:center;gap:4px}
+.chatbot-header-info p::before{content:'';width:6px;height:6px;background:#00d44a;border-radius:50%;animation:pulse 2s ease infinite}
+.chatbot-close{margin-left:auto;background:none;border:none;color:var(--text2);cursor:pointer;padding:4px;transition:color 0.2s;font-size:1.2rem}
+.chatbot-close:hover{color:var(--text)}
+.chatbot-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px;min-height:280px;max-height:360px;scrollbar-width:thin;scrollbar-color:var(--bg3) transparent}
+.chatbot-messages::-webkit-scrollbar{width:3px}
+.chatbot-messages::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px}
+.chat-msg{max-width:85%;padding:12px 16px;border-radius:16px;font-size:0.85rem;line-height:1.6;animation:msgSlide 0.3s ease}
+.chat-msg.bot{background:var(--bg3);color:var(--text);border-bottom-left-radius:4px;align-self:flex-start}
+.chat-msg.user{background:var(--accent);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.chat-msg.bot strong{color:var(--accent);font-weight:600}
+.chat-msg.bot ul{margin:6px 0;padding-left:16px;list-style:disc}
+.chat-msg.bot ul li{margin:3px 0;color:var(--text2)}
+.chat-msg.bot .macro-hl{display:inline-block;padding:2px 8px;background:rgba(255,77,0,0.1);border:1px solid rgba(255,77,0,0.2);border-radius:4px;font-size:0.75rem;font-weight:600;color:var(--accent);margin:2px}
+@keyframes msgSlide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.chat-typing{display:flex;gap:4px;padding:12px 16px;align-self:flex-start}
+.chat-typing span{width:7px;height:7px;background:var(--text2);border-radius:50%;animation:typingDot 1.4s ease infinite}
+.chat-typing span:nth-child(2){animation-delay:0.2s}
+.chat-typing span:nth-child(3){animation-delay:0.4s}
+@keyframes typingDot{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-6px);opacity:1}}
+.chatbot-quick{padding:10px 20px;border-top:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0}
+.chat-quick-btn{padding:6px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;color:var(--text2);font-size:0.7rem;font-weight:500;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.chat-quick-btn:hover{background:rgba(255,77,0,0.1);border-color:rgba(255,77,0,0.3);color:var(--accent)}
+.chatbot-input-area{padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px;flex-shrink:0}
+.chatbot-input{flex:1;padding:10px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:0.85rem;outline:none;transition:border-color 0.2s;font-family:inherit}
+.chatbot-input:focus{border-color:var(--accent)}
+.chatbot-input::placeholder{color:var(--text3)}
+.chatbot-send{width:38px;height:38px;border-radius:10px;background:var(--accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
+.chatbot-send:hover{background:#ff6622;transform:scale(1.05)}
+.chatbot-send svg{width:16px;height:16px;fill:#fff}
+
+/* PARTICLE CANVAS */
+#particleCanvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}
+
+/* MORPHING BLOBS */
+.morph-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.15;animation:morphBlob 15s ease-in-out infinite}
+.morph-blob.b1{width:400px;height:400px;background:var(--accent);top:10%;right:5%;animation-delay:0s}
+.morph-blob.b2{width:300px;height:300px;background:#ff6622;bottom:20%;left:10%;animation-delay:5s}
+@keyframes morphBlob{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%;transform:rotate(0deg) scale(1)}25%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%;transform:rotate(90deg) scale(1.1)}50%{border-radius:50% 60% 30% 60%/30% 50% 70% 50%;transform:rotate(180deg) scale(0.95)}75%{border-radius:60% 30% 50% 40%/70% 50% 40% 60%;transform:rotate(270deg) scale(1.05)}}
+
+/* RESEARCH BADGE */
+.research-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.15);border-radius:100px;font-size:0.7rem;font-weight:500;color:#00d4ff;margin-top:12px}
+.research-badge svg{width:12px;height:12px;fill:#00d4ff}
+
+/* GLOW CARD EFFECT */
+.glow-card{position:relative;overflow:hidden}
+.glow-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(255,77,0,0.04),transparent 30%);animation:glowRotate 8s linear infinite;pointer-events:none}
+@keyframes glowRotate{100%{transform:rotate(360deg)}}
+
+/* RIPPLE HOVER */
+.ripple-hover{position:relative;overflow:hidden}
+.ripple-hover::after{content:'';position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,0.06) 0%,transparent 60%);opacity:0;transition:opacity 0.3s}
+.ripple-hover:hover::after{opacity:1}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav{padding:16px 20px}
+  .nav-menu{display:none}
+  .hamburger{display:flex}
+  .hero{padding:100px 20px 60px}
+  .hero-stats{gap:24px;flex-wrap:wrap}
+  .hero-stat-num{font-size:1.8rem}
+  .section{padding:80px 20px}
+  .tracker-grid,.exercise-grid,.meal-grid,.guide-grid{grid-template-columns:1fr}
+  .diet-tabs{flex-direction:column;align-items:center}
+  .footer{padding:40px 20px 20px}
+  .chatbot-window{width:calc(100% - 24px);right:12px;bottom:90px;max-height:70vh}
+  .chatbot-fab{bottom:20px;right:16px;width:54px;height:54px}
+}
+</style>
+</head>
+<body>
+<!-- LOADING SCREEN -->
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-logo">REPNOXX</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-brand">REP<span>NOXX</span></div>
+  <div class="nav-menu">
+    <a href="#tracker">Tracker</a>
+    <a href="#gym">Gym</a>
+    <a href="#home">Home</a>
+    <a href="#diet">Diet</a>
+    <a href="#guide">Guide</a>
+    <a href="#" onclick="event.preventDefault();toggleChatbot()">AI Coach</a>
+    <a href="https://www.instagram.com/repnoxx?igsh=NHYydTBwNnR6N3g=" target="_blank" class="nav-insta">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+      Instagram
+    </a>
+    <a href="#tracker" class="nav-cta">Start Now</a>
+  </div>
+  <div class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileMenu">
+  <a href="#tracker" onclick="toggleMobile()">Tracker</a>
+  <a href="#gym" onclick="toggleMobile()">Gym</a>
+  <a href="#home" onclick="toggleMobile()">Home</a>
+  <a href="#diet" onclick="toggleMobile()">Diet</a>
+  <a href="#guide" onclick="toggleMobile()">Guide</a>
+  <a href="https://www.instagram.com/repnoxx?igsh=NHYydTBwNnR6N3g=" target="_blank">Instagram</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-gradient"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-glow g1"></div>
+    <div class="hero-glow g2"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="morph-blob b1"></div>
+    <div class="morph-blob b2"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">Premium Fitness Platform</div>
+    <h1 class="hero-title">Train <span class="highlight">Harder.</span><br>Recover <span class="highlight">Smarter.</span></h1>
+    <p class="hero-desc">The complete fitness ecosystem for tracking workouts, nutrition, and progress. Built for athletes who demand results.</p>
+    <div class="hero-actions">
+      <a href="#tracker" class="btn btn-primary">Start Tracking</a>
+      <a href="#gym" class="btn btn-secondary">View Workouts</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="50">0</div>
+        <div class="hero-stat-label">Exercises</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="4">0</div>
+        <div class="hero-stat-label">Diet Plans</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="100">0</div>
+        <div class="hero-stat-label">% Evidence-Based</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text2)">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>
+
+<!-- TRACKER -->
+<section class="section tracker-section reveal" id="tracker">
+  <div class="section-header">
+    <div class="section-label">Calorie & Protein Tracker</div>
+    <h2 class="section-title">Track Your Progress</h2>
+    <p class="section-desc">Monitor your daily intake. Set goals. Hit them consistently.</p>
+  </div>
+  <div class="tracker-grid">
+    <div class="tracker-card">
+      <div class="tracker-label">Calories Consumed</div>
+      <div class="tracker-value"><span id="calVal">0</span><span class="tracker-unit">kcal</span></div>
+      <div class="tracker-bar"><div class="tracker-bar-fill cal" id="calBar" style="width:0%"></div></div>
+      <div class="tracker-meta"><span>Goal: <span id="calGoalDisp">2500</span> kcal</span><span id="calPercent">0%</span></div>
+      <div class="tracker-input-row">
+        <input type="number" class="tracker-input" id="calInput" placeholder="Enter kcal">
+        <button class="tracker-btn" onclick="addCalories()">Add</button>
+      </div>
+    </div>
+    <div class="tracker-card">
+      <div class="tracker-label">Protein Consumed</div>
+      <div class="tracker-value"><span id="protVal">0</span><span class="tracker-unit">g</span></div>
+      <div class="tracker-bar"><div class="tracker-bar-fill protein" id="protBar" style="width:0%"></div></div>
+      <div class="tracker-meta"><span>Goal: <span id="protGoalDisp">150</span> g</span><span id="protPercent">0%</span></div>
+      <div class="tracker-input-row">
+        <input type="number" class="tracker-input" id="protInput" placeholder="Enter grams">
+        <button class="tracker-btn" onclick="addProtein()">Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="tracker-goals">
+    <div class="goal-group"><label>Calorie Goal</label><input type="number" class="goal-input" id="calGoalInput" value="2500" onchange="updateGoals()"></div>
+    <div class="goal-group"><label>Protein Goal</label><input type="number" class="goal-input" id="protGoalInput" value="150" onchange="updateGoals()"></div>
+  </div>
+  <div style="text-align:center;margin-top:16px">
+    <button class="tracker-reset" onclick="resetTracker()">Reset Today's Data</button>
+  </div>
+</section>
+
+<!-- GYM -->
+<section class="section reveal" id="gym">
+  <div class="section-header">
+    <div class="section-label">Gym Exercises</div>
+    <h2 class="section-title">Complete Exercise Library</h2>
+    <p class="section-desc">Professional exercise database with sets, reps, and video tutorials.</p>
+  </div>
+  <div class="tabs" id="gymTabs">
+    <div class="tab active" onclick="filterGym('all',this)">All</div>
+    <div class="tab" onclick="filterGym('chest',this)">Chest</div>
+    <div class="tab" onclick="filterGym('back',this)">Back</div>
+    <div class="tab" onclick="filterGym('legs',this)">Legs</div>
+    <div class="tab" onclick="filterGym('shoulders',this)">Shoulders</div>
+    <div class="tab" onclick="filterGym('arms',this)">Arms</div>
+    <div class="tab" onclick="filterGym('core',this)">Core</div>
+  </div>
+  <div class="exercise-grid" id="gymGrid"></div>
+</section>
+
+<!-- HOME -->
+<section class="section reveal" id="home" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-header">
+    <div class="section-label">Home Workouts</div>
+    <h2 class="section-title">Train Anywhere</h2>
+    <p class="section-desc">No gym? No problem. Complete bodyweight workouts with proper form.</p>
+  </div>
+  <div class="tabs" id="homeTabs">
+    <div class="tab active" onclick="filterHome('all',this)">All</div>
+    <div class="tab" onclick="filterHome('upper',this)">Upper Body</div>
+    <div class="tab" onclick="filterHome('lower',this)">Lower Body</div>
+    <div class="tab" onclick="filterHome('core',this)">Core</div>
+    <div class="tab" onclick="filterHome('cardio',this)">Cardio</div>
+    <div class="tab" onclick="filterHome('full',this)">Full Body</div>
+  </div>
+  <div class="exercise-grid" id="homeGrid"></div>
+</section>
+
+<!-- DIET -->
+<section class="section diet-section reveal" id="diet">
+  <div class="section-header">
+    <div class="section-label">Nutrition Plans</div>
+    <h2 class="section-title">Fuel Your Body</h2>
+    <p class="section-desc">Evidence-based meal plans with precise macros, backed by ISSN & sports nutrition research.</p>
+    <div class="research-badge"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Based on ISSN Guidelines — 1.6-2.2g protein/kg bodyweight</div>
+  </div>
+  <div class="diet-tabs">
+    <button class="diet-tab active" onclick="switchDiet('veg',this)"><span>Vegetarian</span></button>
+    <button class="diet-tab" onclick="switchDiet('nonveg',this)"><span>Non-Veg</span></button>
+    <button class="diet-tab" onclick="switchDiet('cutting',this)"><span>Weight Loss</span></button>
+    <button class="diet-tab" onclick="switchDiet('budget',this)"><span>Budget</span></button>
+  </div>
+  <div class="diet-plan active" id="vegPlan"><div class="meal-grid" id="vegGrid"></div></div>
+  <div class="diet-plan" id="nonvegPlan"><div class="meal-grid" id="nonvegGrid"></div></div>
+  <div class="diet-plan" id="cuttingPlan"><div class="meal-grid" id="cuttingGrid"></div></div>
+  <div class="diet-plan" id="budgetPlan"><div class="meal-grid" id="budgetGrid"></div></div>
+</section>
+
+<!-- GUIDE -->
+<section class="section reveal" id="guide">
+  <div class="section-header">
+    <div class="section-label">Expert Guide</div>
+    <h2 class="section-title">Maximize Your Results</h2>
+    <p class="section-desc">Proven strategies to optimize your nutrition and training.</p>
+  </div>
+  <div class="guide-grid">
+    <div class="guide-card"><div class="guide-num">01</div><h3>Calculate Your TDEE</h3><p>Total Daily Energy Expenditure is your baseline for nutrition planning.</p><ul><li>BMR x Activity Multiplier</li><li>Sedentary: BMR x 1.2</li><li>Moderate: BMR x 1.55</li><li>Athlete: BMR x 1.725</li></ul></div>
+    <div class="guide-card"><div class="guide-num">02</div><h3>High-Calorie Dense Foods</h3><p>Pack more calories per serving with these powerhouses:</p><ul><li>Nuts & Nut Butters (600+ kcal/100g)</li><li>Olive Oil & Ghee (120 kcal/tbsp)</li><li>Avocados (160 kcal/100g)</li><li>Whole Milk & Cream</li><li>Dried Fruits & Granola</li></ul></div>
+    <div class="guide-card"><div class="guide-num">03</div><h3>Protein Timing Strategy</h3><p>Distribute protein across 4-6 meals for optimal absorption:</p><ul><li>Breakfast: 30-40g protein</li><li>Pre-workout: 20-30g</li><li>Post-workout: 40-50g (within 30 min)</li><li>Before bed: Casein or paneer</li></ul></div>
+    <div class="guide-card"><div class="guide-num">04</div><h3>Meal Prep Like a Pro</h3><p>Batch cook on Sundays to stay consistent all week:</p><ul><li>Cook rice & rotis in bulk</li><li>Pre-portion protein sources</li><li>Prepare overnight oats</li><li>Store in glass containers</li></ul></div>
+    <div class="guide-card"><div class="guide-num">05</div><h3>Smart Snacking</h3><p>Bridge meal gaps with high-protein snacks:</p><ul><li>Greek yogurt + honey + nuts</li><li>Protein shake with banana</li><li>Boiled eggs / chickpeas</li><li>Paneer tikka / chicken rolls</li><li>Mixed trail mix (200+ kcal)</li></ul></div>
+    <div class="guide-card"><div class="guide-num">06</div><h3>Hydration & Recovery</h3><p>Calories don't work without proper hydration and rest:</p><ul><li>Drink 3-4 liters water daily</li><li>Sleep 7-9 hours for muscle recovery</li><li>Post-workout: banana + whey shake</li><li>Rest days are growth days</li></ul></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">REP<span>NOXX</span></div>
+  <p class="footer-desc">Your Complete Fitness Ecosystem</p>
+  <a href="https://www.instagram.com/repnoxx?igsh=NHYydTBwNnR6N3g=" target="_blank" class="footer-insta">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+    Follow @RepNoxx
+  </a>
+  <div class="footer-copy">© 2025 RepNoxx. All rights reserved.</div>
+  <div style="position:absolute;bottom:10px;right:10px;width:10px;height:10px;opacity:0;cursor:default" onclick="handleAdminClick()"></div>
+</footer>
+
+<!-- ADMIN -->
+<div id="adminOverlay" class="admin-overlay" style="display:none">
+  <div class="admin-box">
+    <button class="admin-close" onclick="closeAdmin()">✕</button>
+    <div id="adminLoginSection" class="admin-login">
+      <h2>Admin Access</h2>
+      <p style="color:var(--text2);margin-bottom:20px;font-size:0.85rem">Enter password to continue</p>
+      <input type="password" id="adminPwInput" placeholder="••••" maxlength="10" onkeydown="if(event.key==='Enter')adminLogin()">
+      <button onclick="adminLogin()">Unlock</button>
+      <p id="adminError" style="color:#ff4444;margin-top:12px;display:none;font-size:0.85rem">Incorrect password</p>
+    </div>
+    <div id="adminPanel" style="display:none">
+      <h2>Admin Panel</h2>
+      <div class="admin-section">
+        <h3>Tracker Goals</h3>
+        <div class="admin-field"><label>Calorie Goal</label><input type="number" id="adminCalGoal"></div>
+        <div class="admin-field"><label>Protein Goal</label><input type="number" id="adminProtGoal"></div>
+      </div>
+      <div class="admin-section">
+        <h3>Instagram Link</h3>
+        <div class="admin-field"><label>URL</label><input type="text" id="adminInsta"></div>
+      </div>
+      <div class="admin-section">
+        <h3>YouTube Video Links</h3>
+        <p style="color:var(--text2);font-size:0.75rem;margin-bottom:10px">Edit video IDs (YouTube embed ID from URL: youtube.com/watch?v=VIDEO_ID)</p>
+        <div class="admin-video-list" id="adminVideoList"></div>
+      </div>
+      <button class="admin-save" onclick="adminSave()">Save Changes</button>
+      <div class="admin-reset-pw">
+        <h3 style="font-size:0.8rem;color:#ff4444;margin-bottom:12px;letter-spacing:1px;text-transform:uppercase">Reset Password</h3>
+        <div class="admin-field"><label>Old PW</label><input type="password" id="adminOldPw" maxlength="10"></div>
+        <div class="admin-field"><label>New PW</label><input type="password" id="adminNewPw" maxlength="10"></div>
+        <button class="admin-save" style="background:#ff4444" onclick="adminResetPw()">Reset Password</button>
+        <p id="adminPwMsg" style="margin-top:8px;font-size:0.8rem"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div id="videoModal" class="video-modal" style="display:none">
+  <div class="video-modal-box">
+    <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
+    <div class="video-modal-title" id="videoModalTitle"></div>
+    <div class="video-modal-player">
+      <iframe id="videoModalFrame" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    </div>
+    <div id="videoFallback" style="display:none;text-align:center;margin-top:16px">
+      <p style="color:var(--text2);font-size:0.85rem;margin-bottom:12px">Video not loading?</p>
+      <button id="videoFallbackBtn" style="padding:10px 20px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.85rem">Watch on YouTube</button>
+    </div>
+  </div>
+</div>
+<script>
+// ========== DATA ==========
+const gymExercises=[
+{name:"Flat Bench Press",muscle:"chest",sets:"4x8-10",detail:"Barbell, full range of motion. Keep feet flat, arch back slightly.",q:"flat bench press exercise form"},
+{name:"Incline Dumbbell Press",muscle:"chest",sets:"4x10-12",detail:"30-45 degree incline. Squeeze chest at top. Control the negative.",q:"incline dumbbell press exercise"},
+{name:"Cable Flyes",muscle:"chest",sets:"3x12-15",detail:"Slight bend in elbows. Feel the stretch at bottom, squeeze at top.",q:"cable flyes chest exercise"},
+{name:"Push-Ups (Weighted)",muscle:"chest",sets:"3x15-20",detail:"Add plate on back. Full extension at top, chest to floor.",q:"weighted push ups exercise"},
+{name:"Dips (Chest Focus)",muscle:"chest",sets:"3x10-12",detail:"Lean forward 30 degrees. Lower until shoulders below elbows.",q:"chest dips exercise form"},
+{name:"Deadlift",muscle:"back",sets:"4x5-6",detail:"Conventional stance. Brace core, drive through heels. King of lifts.",q:"deadlift exercise proper form"},
+{name:"Pull-Ups",muscle:"back",sets:"4x8-12",detail:"Full dead hang to chin over bar. Add weight if easy.",q:"pull ups exercise form"},
+{name:"Barbell Row",muscle:"back",sets:"4x8-10",detail:"45 degree torso angle. Pull to lower chest. Squeeze lats hard.",q:"barbell row exercise form"},
+{name:"Lat Pulldown",muscle:"back",sets:"3x10-12",detail:"Wide grip. Pull to upper chest. Hold 1 sec at bottom.",q:"lat pulldown exercise form"},
+{name:"Seated Cable Row",muscle:"back",sets:"3x10-12",detail:"Neutral grip. Retract scapula first, then pull. Control release.",q:"seated cable row exercise"},
+{name:"T-Bar Row",muscle:"back",sets:"4x8-10",detail:"Chest supported if possible. Squeeze at top for 1 second.",q:"t-bar row exercise form"},
+{name:"Barbell Squat",muscle:"legs",sets:"4x6-8",detail:"Below parallel. Brace hard. Drive up explosively. The king.",q:"barbell squat exercise form"},
+{name:"Romanian Deadlift",muscle:"legs",sets:"4x8-10",detail:"Slight knee bend. Hinge at hips. Feel hamstring stretch.",q:"romanian deadlift exercise form"},
+{name:"Leg Press",muscle:"legs",sets:"4x10-12",detail:"Feet shoulder-width. Full range. Don't lock knees at top.",q:"leg press exercise form"},
+{name:"Walking Lunges",muscle:"legs",sets:"3x12/leg",detail:"Long stride. Back knee nearly touches floor. Hold dumbbells.",q:"walking lunges exercise"},
+{name:"Leg Curl",muscle:"legs",sets:"3x10-12",detail:"Controlled negative. Squeeze hamstrings at top for 2 sec.",q:"leg curl machine exercise"},
+{name:"Calf Raises",muscle:"legs",sets:"4x15-20",detail:"Full stretch at bottom. Hold peak contraction for 2 sec.",q:"calf raises exercise form"},
+{name:"Overhead Press",muscle:"shoulders",sets:"4x6-8",detail:"Standing barbell. Brace core. Lock out overhead. Strict form.",q:"overhead press exercise form"},
+{name:"Lateral Raises",muscle:"shoulders",sets:"4x12-15",detail:"Slight lean forward. Lead with elbows. Control the descent.",q:"lateral raises exercise form"},
+{name:"Face Pulls",muscle:"shoulders",sets:"3x15-20",detail:"Rope attachment. Pull apart at face level. External rotate.",q:"face pulls cable exercise"},
+{name:"Arnold Press",muscle:"shoulders",sets:"3x10-12",detail:"Start palms facing you. Rotate as you press up. Full lockout.",q:"arnold press exercise form"},
+{name:"Rear Delt Fly",muscle:"shoulders",sets:"3x12-15",detail:"Bent over or machine. Squeeze rear delts. Pinky up at top.",q:"rear delt fly exercise"},
+{name:"Barbell Curl",muscle:"arms",sets:"4x8-10",detail:"Strict form. No swinging. Squeeze biceps hard at top.",q:"barbell bicep curl exercise"},
+{name:"Hammer Curls",muscle:"arms",sets:"3x10-12",detail:"Neutral grip. Targets brachialis. Alternate or together.",q:"hammer curls exercise form"},
+{name:"Tricep Pushdown",muscle:"arms",sets:"4x10-12",detail:"Rope or bar. Elbows pinned to sides. Full lockout at bottom.",q:"tricep pushdown cable exercise"},
+{name:"Skull Crushers",muscle:"arms",sets:"3x10-12",detail:"EZ bar to forehead. Keep elbows narrow. Stretch at bottom.",q:"skull crushers exercise form"},
+{name:"Preacher Curls",muscle:"arms",sets:"3x10-12",detail:"EZ bar. Full extension at bottom. Squeeze at top. No momentum.",q:"preacher curls exercise"},
+{name:"Concentration Curls",muscle:"arms",sets:"3x10-12",detail:"Seated, elbow on inner thigh. Peak contraction focus.",q:"concentration curls exercise"},
+{name:"Plank Hold",muscle:"core",sets:"3x45-60s",detail:"Forearm plank. Squeeze glutes. Neutral spine. Breathe steady.",q:"plank exercise proper form"},
+{name:"Hanging Leg Raise",muscle:"core",sets:"3x12-15",detail:"Full hang. Raise legs to 90 degrees or higher. No swinging.",q:"hanging leg raise exercise"},
+{name:"Cable Woodchop",muscle:"core",sets:"3x12/side",detail:"High to low diagonal. Rotate from core, not just arms.",q:"cable woodchop exercise"},
+{name:"Ab Wheel Rollout",muscle:"core",sets:"3x10-12",detail:"Kneeling. Roll out as far as possible. Pull back with abs.",q:"ab wheel rollout exercise"},
+{name:"Russian Twist",muscle:"core",sets:"3x20",detail:"Hold weight. Lean back 45 degrees. Rotate side to side. Feet elevated.",q:"russian twist exercise"}
+];
+
+const homeExercises=[
+{name:"Push-Ups",cat:"upper",sets:"4x15-25",detail:"Full range. Chest to floor. Vary width for different angles.",q:"push ups proper form exercise"},
+{name:"Diamond Push-Ups",cat:"upper",sets:"3x12-15",detail:"Hands together forming diamond. Tricep focus. Elbows tight.",q:"diamond push ups exercise"},
+{name:"Pike Push-Ups",cat:"upper",sets:"3x10-12",detail:"Hips high, body in V. Press head toward floor. Shoulder builder.",q:"pike push ups exercise"},
+{name:"Chair Dips",cat:"upper",sets:"3x12-15",detail:"Hands on chair edge. Lower until 90 degree elbow. Press up strong.",q:"chair dips tricep exercise"},
+{name:"Doorframe Rows",cat:"upper",sets:"3x12-15",detail:"Grab doorframe, lean back. Pull chest to frame. Squeeze back.",q:"doorframe row exercise home"},
+{name:"Towel Bicep Curls",cat:"upper",sets:"3x15",detail:"Step on towel, curl against self-resistance. Squeeze at top.",q:"towel bicep curl exercise"},
+{name:"Bodyweight Squats",cat:"lower",sets:"4x20-30",detail:"Below parallel. Arms forward for balance. Pulse at bottom.",q:"bodyweight squat exercise form"},
+{name:"Bulgarian Split Squat",cat:"lower",sets:"3x12/leg",detail:"Rear foot elevated on chair. Deep lunge. Hold for balance.",q:"bulgarian split squat exercise"},
+{name:"Glute Bridge",cat:"lower",sets:"4x15-20",detail:"Lie on back. Drive hips up. Squeeze glutes hard at top 2 sec.",q:"glute bridge exercise form"},
+{name:"Single Leg Deadlift",cat:"lower",sets:"3x10/leg",detail:"Balance on one leg. Hinge forward. Bodyweight or hold water jug.",q:"single leg deadlift exercise"},
+{name:"Wall Sit",cat:"lower",sets:"3x45-60s",detail:"Back against wall. Thighs parallel to floor. Burn is the point.",q:"wall sit exercise"},
+{name:"Jump Squats",cat:"lower",sets:"3x15",detail:"Explode up from squat. Land soft. Immediate next rep.",q:"jump squats exercise form"},
+{name:"Plank",cat:"core",sets:"3x45-60s",detail:"Forearm plank. Everything tight. Breathe. Don't sag.",q:"plank exercise proper form"},
+{name:"Bicycle Crunches",cat:"core",sets:"3x20/side",detail:"Elbow to opposite knee. Full extension. Slow and controlled.",q:"bicycle crunches exercise"},
+{name:"Mountain Climbers",cat:"core",sets:"3x30s",detail:"Plank position. Drive knees to chest fast. Keep hips low.",q:"mountain climbers exercise"},
+{name:"Dead Bug",cat:"core",sets:"3x10/side",detail:"Lie on back. Extend opposite arm/leg. Keep lower back flat.",q:"dead bug exercise form"},
+{name:"V-Ups",cat:"core",sets:"3x12-15",detail:"Lie flat. Simultaneously lift legs and torso. Touch toes at top.",q:"v-ups ab exercise"},
+{name:"Burpees",cat:"cardio",sets:"3x10-15",detail:"Squat, jump back, push-up, jump in, jump up. Full throttle.",q:"burpees exercise proper form"},
+{name:"High Knees",cat:"cardio",sets:"3x30s",detail:"Run in place. Knees to hip height. Pump arms fast.",q:"high knees exercise cardio"},
+{name:"Jumping Jacks",cat:"cardio",sets:"3x40",detail:"Classic. Full extension at top. Land soft on balls of feet.",q:"jumping jacks exercise"},
+{name:"Box Step-Ups",cat:"full",sets:"3x12/leg",detail:"Use sturdy chair/step. Drive through front heel. Control down.",q:"step ups exercise form"},
+{name:"Bear Crawl",cat:"full",sets:"3x30s",detail:"On all fours, knees hovering. Crawl forward. Keep hips low.",q:"bear crawl exercise"},
+{name:"Inchworm",cat:"full",sets:"3x8",detail:"Stand, walk hands to plank, walk feet to hands. Full stretch.",q:"inchworm exercise"},
+{name:"Squat to Push-Up",cat:"full",sets:"3x10",detail:"Squat down, hands to floor, jump feet back, push-up, return.",q:"squat to push up exercise"}
+];
+
+const vegDiet=[
+{time:"Early Morning 6:00 AM",name:"Power Starter",items:["Warm water + lemon + honey (250ml)","Soaked almonds (10) + walnuts (15g)","1 banana (120g)","Vitamin D3 + B12 supplement"],cal:280,prot:8,carb:42,fat:10},
+{time:"Breakfast 8:00 AM",name:"High-Protein Breakfast",items:["Oats (60g) + full cream milk (300ml) + peanuts (20g)","Paneer bhurji (100g) + 2 brown bread","1 banana","Total: ~22g protein"],cal:520,prot:22,carb:62,fat:18},
+{time:"Mid-Morning 10:30 AM",name:"Fuel Up",items:["Greek yogurt / curd (200g) + honey","Soya chunks (30g) chaat with onion & lemon","Mixed seeds (chia 10g + flax 10g)"],cal:380,prot:25,carb:30,fat:14},
+{time:"Lunch 1:00 PM",name:"Power Lunch",items:["Brown rice (150g cooked)","Dal tadka (40g raw moong dal)","Soya chunks curry (50g raw)","Roti (2) + mixed veg sabzi","Curd (150g) + green salad"],cal:620,prot:35,carb:80,fat:14},
+{time:"Pre-Workout 4:00 PM",name:"Pre-Train Fuel",items:["2 bananas + 1 tbsp peanut butter","Black coffee (caffeine = +2-5% performance)","Roasted chana (30g)"],cal:320,prot:10,carb:55,fat:8},
+{time:"Post-Workout 6:30 PM",name:"Recovery Shake",items:["Whey protein (1 scoop / 30g) in milk (200ml)","1 banana","Total: ~30g protein fast-absorbing"],cal:310,prot:30,carb:35,fat:5},
+{time:"Dinner 8:30 PM",name:"Repair & Recover",items:["Tofu / paneer (150g) tikka or curry","Roti (2) + dal (30g raw)","Green salad (cucumber, tomato)","Magnesium-rich: spinach sabzi"],cal:480,prot:32,carb:48,fat:16},
+{time:"Before Bed 10:00 PM",name:"Night Recovery",items:["Warm milk (200ml) — casein for overnight MPS","10 almonds + 5 walnuts","Zinc: pumpkin seeds (10g)"],cal:220,prot:12,carb:10,fat:14}
+];
+
+const nonvegDiet=[
+{time:"Early Morning 6:00 AM",name:"Power Starter",items:["Warm water + lemon + honey","Soaked almonds (10) + walnuts (15g)","4 egg whites","Vitamin D3 supplement"],cal:260,prot:20,carb:15,fat:10},
+{time:"Breakfast 8:00 AM",name:"Protein Breakfast",items:["3 whole eggs + 2 egg whites (scrambled/omelette)","2 brown bread + butter","Oats (50g) with milk (200ml) + banana","Total: ~32g protein"],cal:480,prot:32,carb:45,fat:18},
+{time:"Mid-Morning 10:30 AM",name:"Fuel Up",items:["Curd (200g) + granola (30g)","Roasted chana (30g)","1 apple"],cal:280,prot:14,carb:32,fat:8},
+{time:"Lunch 1:00 PM",name:"Power Lunch",items:["Chicken breast (150g) — grilled / curry","Brown rice (150g cooked)","Dal (30g raw) + roti (1)","Green salad + curd (100g)","Omega-3: Add fish 2x/week (surmai/sardines)"],cal:620,prot:52,carb:65,fat:14},
+{time:"Pre-Workout 4:00 PM",name:"Pre-Train Fuel",items:["Oats (50g) + milk (200ml) + 1 tbsp peanut butter","Black coffee (30 min before training)","2 boiled eggs"],cal:380,prot:20,carb:42,fat:12},
+{time:"Post-Workout 6:30 PM",name:"Recovery Shake",items:["Whey protein double scoop (60g) in water","1 banana + honey","Total: ~48g protein — fast absorption"],cal:350,prot:48,carb:35,fat:3},
+{time:"Dinner 8:30 PM",name:"Lean & Strong",items:["Fish curry / chicken (150g)","Roti (2) + sabzi","Dal (30g raw)","Green salad","Zinc: eggs/meat support testosterone"],cal:520,prot:45,carb:42,fat:14},
+{time:"Before Bed 10:00 PM",name:"Night Recovery",items:["Warm milk (250ml) — casein protein","10 almonds","Magnesium: helps sleep quality"],cal:190,prot:10,carb:12,fat:10}
+];
+
+const cuttingDiet=[
+{time:"Early Morning 6:00 AM",name:"Metabolic Kickstart",items:["Warm water + lemon (250ml)","Black coffee (thermogenic effect)","5 soaked almonds"],cal:35,prot:1,carb:2,fat:2},
+{time:"Breakfast 8:00 AM",name:"High-Protein Start",items:["2 egg whites + 1 whole egg","Oats (40g) with water + berries (50g)","Green tea"],cal:250,prot:18,carb:30,fat:7},
+{time:"Mid-Morning 10:30 AM",name:"Smart Snack",items:["Roasted chana (30g)","Green tea (catechins boost metabolism)","Cucumber slices"],cal:120,prot:6,carb:18,fat:3},
+{time:"Lunch 1:00 PM",name:"Lean Power Lunch",items:["Chicken breast / fish (150g) — grilled","Big mixed salad (200g)","1 roti + dal (30g raw)","Lemon dressing (vitamin C for iron absorption)"],cal:380,prot:42,carb:30,fat:8},
+{time:"Pre-Workout 4:00 PM",name:"Training Fuel",items:["1 banana","Black coffee","500ml water"],cal:105,prot:1,carb:27,fat:0},
+{time:"Post-Workout 6:30 PM",name:"Recovery",items:["Whey protein (1 scoop) in water","1 small banana"],cal:165,prot:25,carb:18,fat:1},
+{time:"Dinner 8:00 PM",name:"Light & Filling",items:["Paneer / tofu tikka (100g)","Sautéed vegetables (200g) — broccoli, beans, peppers","Clear soup (1 bowl)","Minimal oil: 3-4 tsp total daily"],cal:280,prot:22,carb:15,fat:12},
+{time:"Before Bed 10:00 PM",name:"Recovery",items:["Chamomile tea (improves sleep quality)","Casein: 100g curd if hungry"],cal:60,prot:4,carb:5,fat:2}
+];
+
+const budgetDiet=[
+{time:"Early Morning 6:00 AM",name:"Cheap & Effective",items:["Warm water + lemon","Soaked chana (30g) — ₹3","5 peanuts — ₹1"],cal:120,prot:7,carb:18,fat:3},
+{time:"Breakfast 8:00 AM",name:"Budget Power Breakfast",items:["Soya chunks upma (50g soya) — ₹7","Milk (200ml) — ₹12","1 banana — ₹5","Total protein: 32g | Cost: ₹24"],cal:350,prot:32,carb:42,fat:5},
+{time:"Mid-Morning 10:30 AM",name:"₹5 Snack",items:["Roasted chana (30g) — ₹4","Water / black coffee"],cal:100,prot:6,carb:16,fat:2},
+{time:"Lunch 1:00 PM",name:"Desi Power Meal",items:["Dal (40g raw moong) — ₹8","Roti (2) — ₹6","Rice (100g) — ₹5","Peanuts (20g) — ₹3","Onion + green chili"],cal:420,prot:22,carb:62,fat:8},
+{time:"Pre-Workout 4:00 PM",name:"Training Fuel",items:["1 banana — ₹5","Black coffee — ₹3"],cal:108,prot:1,carb:27,fat:0},
+{time:"Post-Workout 6:30 PM",name:"Recovery",items:["Sattu drink (30g) in water — ₹8","OR: 2 boiled eggs — ₹14"],cal:130,prot:8,carb:20,fat:2},
+{time:"Dinner 8:00 PM",name:"Soya Special",items:["Soya chunks curry (50g) — ₹7","Roti (2) — ₹6","Curd (100g) — ₹8","Salad"],cal:380,prot:32,carb:45,fat:6},
+{time:"Before Bed 10:00 PM",name:"Night Protein",items:["Warm milk (200ml) — ₹12","Total daily: ~100g protein for ₹96-120!"],cal:130,prot:7,carb:10,fat:6}
+];
+
+// ========== VIDEO MODAL ==========
+const videoMap = {
+  'Flat Bench Press': 'rT7DgCr-3pg',
+  'Incline Dumbbell Press': '0sH1MVRDwvI',
+  'Cable Flyes': 'IweAmAmxQJI',
+  'Deadlift': 'opH2m5Dl8pM',
+  'Pull-Ups': 'eGo4IYlbE5g',
+  'Barbell Row': 'FWJR5Ve8f7I',
+  'Lat Pulldown': 'CAwf7n6Luuc',
+  'Barbell Squat': 'ultWZbUMPL8',
+  'Overhead Press': '2yjwETjRRbE',
+  'Barbell Curl': 'kw8DBcPPfIU',
+  'Push-Ups': 'IODxDxX7oi4',
+  'Plank': 'pSHjTRCQxIw',
+  'Burpees': 'qLBImWHhCXw'
+};
+
+function openVideo(exerciseName, query) {
+  var saved = JSON.parse(localStorage.getItem('repnoxx_videos') || '{}');
+  var merged = Object.assign({}, videoMap, saved);
+  var videoId = merged[exerciseName];
+  
+  if (videoId && videoId.trim() !== '') {
+    var modal = document.getElementById('videoModal');
+    var frame = document.getElementById('videoModalFrame');
+    var title = document.getElementById('videoModalTitle');
+    var fallback = document.getElementById('videoFallback');
+    var fallbackBtn = document.getElementById('videoFallbackBtn');
+    title.textContent = exerciseName;
+    frame.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+    fallback.style.display = 'none';
+    fallbackBtn.onclick = function() { videoSearchFallback(exerciseName, query); };
+    var loadTimeout = setTimeout(function() {
+      fallback.style.display = 'block';
+    }, 5000);
+    frame.onload = function() { clearTimeout(loadTimeout); };
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  } else {
+    var searchQuery = encodeURIComponent(query || exerciseName);
+    window.open('https://www.youtube.com/results?search_query=' + searchQuery, '_blank');
+  }
+}
+
+function videoSearchFallback(exerciseName, query) {
+  var searchQuery = encodeURIComponent(query || exerciseName);
+  window.open('https://www.youtube.com/results?search_query=' + searchQuery, '_blank');
+}
+
+function closeVideoModal() {
+  var modal = document.getElementById('videoModal');
+  var frame = document.getElementById('videoModalFrame');
+  frame.src = '';
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('videoModal').addEventListener('click', function(e) {
+  if (e.target.id === 'videoModal') closeVideoModal();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeVideoModal(); closeAdmin(); }
+});
+
+// ========== RENDER EXERCISES ==========
+function makeCard(e, type) {
+  var tagClass = 'tag-' + (e.muscle || e.cat);
+  var tagLabel = e.muscle || e.cat;
+  var parts = e.sets.split('x');
+  var setsHtml = '<span class="set-badge">' + parts[0] + ' Sets</span><span class="set-badge">' + parts[1] + ' Reps</span>';
+  var safeName = e.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+  var safeQuery = (e.q || e.name).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+  return '<div class="exercise-card stagger-item">' +
+    '<span class="card-tag ' + tagClass + '">' + tagLabel + '</span>' +
+    '<div class="card-name">' + e.name + '</div>' +
+    '<div class="card-detail">' + e.detail + '</div>' +
+    '<div class="card-sets">' + setsHtml + '</div>' +
+    '<button class="video-btn" data-name="' + safeName + '" data-query="' + safeQuery + '">' +
+      '<span class="play-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 19,12 8,19"/></svg></span>' +
+      'Watch Tutorial' +
+    '</button>' +
+  '</div>';
+}
+
+function renderGym(filter) {
+  var grid = document.getElementById('gymGrid');
+  var list = filter === 'all' ? gymExercises : gymExercises.filter(function(e){ return e.muscle === filter; });
+  grid.innerHTML = list.map(function(e){ return makeCard(e, 'gym'); }).join('');
+}
+
+function filterGym(cat, el) {
+  document.querySelectorAll('#gymTabs .tab').forEach(function(t){ t.classList.remove('active'); });
+  el.classList.add('active');
+  renderGym(cat);
+}
+
+function renderHome(filter) {
+  var grid = document.getElementById('homeGrid');
+  var list = filter === 'all' ? homeExercises : homeExercises.filter(function(e){ return e.cat === filter; });
+  grid.innerHTML = list.map(function(e){ return makeCard(e, 'home'); }).join('');
+}
+
+function filterHome(cat, el) {
+  document.querySelectorAll('#homeTabs .tab').forEach(function(t){ t.classList.remove('active'); });
+  el.classList.add('active');
+  renderHome(cat);
+}
+
+// ========== DIET RENDER ==========
+function renderDiet(data, gridId) {
+  var grid = document.getElementById(gridId);
+  grid.innerHTML = data.map(function(m) {
+    return '<div class="meal-card stagger-item">' +
+      '<div class="meal-time">' + m.time + '</div>' +
+      '<div class="meal-name">' + m.name + '</div>' +
+      '<ul class="meal-items">' + m.items.map(function(i){ return '<li>' + i + '</li>'; }).join('') + '</ul>' +
+      '<div class="meal-macros">' +
+        '<span class="macro macro-cal">' + m.cal + ' kcal</span>' +
+        '<span class="macro macro-prot">' + m.prot + 'g P</span>' +
+        '<span class="macro macro-carb">' + m.carb + 'g C</span>' +
+        '<span class="macro macro-fat">' + m.fat + 'g F</span>' +
+      '</div></div>';
+  }).join('');
+}
+
+function switchDiet(type, el) {
+  document.querySelectorAll('.diet-tab').forEach(function(t){ t.classList.remove('active'); });
+  el.classList.add('active');
+  document.getElementById('vegPlan').classList.toggle('active', type === 'veg');
+  document.getElementById('nonvegPlan').classList.toggle('active', type === 'nonveg');
+  document.getElementById('cuttingPlan').classList.toggle('active', type === 'cutting');
+  document.getElementById('budgetPlan').classList.toggle('active', type === 'budget');
+  setTimeout(handleStaggerAnimation, 50);
+}
+
+// ========== TRACKER ==========
+var trackerData = JSON.parse(localStorage.getItem('repnoxx_tracker') || '{"cal":0,"prot":0,"calGoal":2500,"protGoal":150}');
+
+function updateTrackerUI() {
+  document.getElementById('calVal').textContent = trackerData.cal;
+  document.getElementById('protVal').textContent = trackerData.prot;
+  document.getElementById('calGoalInput').value = trackerData.calGoal;
+  document.getElementById('protGoalInput').value = trackerData.protGoal;
+  document.getElementById('calGoalDisp').textContent = trackerData.calGoal;
+  document.getElementById('protGoalDisp').textContent = trackerData.protGoal;
+  var calPercent = Math.min((trackerData.cal / trackerData.calGoal) * 100, 100);
+  var protPercent = Math.min((trackerData.prot / trackerData.protGoal) * 100, 100);
+  document.getElementById('calBar').style.width = calPercent + '%';
+  document.getElementById('protBar').style.width = protPercent + '%';
+  document.getElementById('calPercent').textContent = Math.round(calPercent) + '%';
+  document.getElementById('protPercent').textContent = Math.round(protPercent) + '%';
+  localStorage.setItem('repnoxx_tracker', JSON.stringify(trackerData));
+}
+
+function addCalories() {
+  var v = parseInt(document.getElementById('calInput').value) || 0;
+  trackerData.cal += v;
+  document.getElementById('calInput').value = '';
+  updateTrackerUI();
+}
+
+function addProtein() {
+  var v = parseInt(document.getElementById('protInput').value) || 0;
+  trackerData.prot += v;
+  document.getElementById('protInput').value = '';
+  updateTrackerUI();
+}
+
+function updateGoals() {
+  trackerData.calGoal = parseInt(document.getElementById('calGoalInput').value) || 2500;
+  trackerData.protGoal = parseInt(document.getElementById('protGoalInput').value) || 150;
+  updateTrackerUI();
+}
+
+function resetTracker() {
+  trackerData.cal = 0;
+  trackerData.prot = 0;
+  updateTrackerUI();
+}
+
+// ========== ADMIN ==========
+var adminPw = '2938';
+var adminClicks = 0, adminClickTimer = null;
+
+function handleAdminClick() {
+  adminClicks++;
+  if (adminClickTimer) clearTimeout(adminClickTimer);
+  adminClickTimer = setTimeout(function(){ adminClicks = 0; }, 3000);
+  if (adminClicks >= 3) { adminClicks = 0; openAdmin(); }
+}
+
+function openAdmin() {
+  document.getElementById('adminOverlay').style.display = 'flex';
+  document.getElementById('adminLoginSection').style.display = 'block';
+  document.getElementById('adminPanel').style.display = 'none';
+  document.getElementById('adminPwInput').value = '';
+  document.getElementById('adminError').style.display = 'none';
+}
+
+function closeAdmin() {
+  document.getElementById('adminOverlay').style.display = 'none';
+}
+
+function adminLogin() {
+  if (document.getElementById('adminPwInput').value === adminPw) {
+    document.getElementById('adminLoginSection').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    document.getElementById('adminCalGoal').value = trackerData.calGoal;
+    document.getElementById('adminProtGoal').value = trackerData.protGoal;
+    document.getElementById('adminInsta').value = 'https://www.instagram.com/repnoxx?igsh=NHYydTBwNnR6N3g=';
+    populateVideoEditor();
+  } else {
+    document.getElementById('adminError').style.display = 'block';
+  }
+}
+
+function populateVideoEditor() {
+  var saved = JSON.parse(localStorage.getItem('repnoxx_videos') || '{}');
+  var merged = Object.assign({}, videoMap, saved);
+  var list = document.getElementById('adminVideoList');
+  var html = '';
+  var keys = Object.keys(merged).sort();
+  for (var i = 0; i < keys.length; i++) {
+    var name = keys[i];
+    var vid = merged[name];
+    html += '<div class="admin-video-item">' +
+      '<label title="' + name + '">' + name + '</label>' +
+      '<input type="text" data-video-name="' + name + '" value="' + vid + '" placeholder="YouTube Video ID">' +
+    '</div>';
+  }
+  list.innerHTML = html;
+}
+
+function adminSave() {
+  trackerData.calGoal = parseInt(document.getElementById('adminCalGoal').value) || 2500;
+  trackerData.protGoal = parseInt(document.getElementById('adminProtGoal').value) || 150;
+  localStorage.setItem('repnoxx_tracker', JSON.stringify(trackerData));
+  updateTrackerUI();
+  var newInsta = document.getElementById('adminInsta').value;
+  if (newInsta) {
+    document.querySelectorAll('a[href*="instagram.com"]').forEach(function(a){ a.href = newInsta; });
+  }
+  var videoInputs = document.querySelectorAll('#adminVideoList input[data-video-name]');
+  var savedVideos = {};
+  videoInputs.forEach(function(inp) {
+    var name = inp.getAttribute('data-video-name');
+    var val = inp.value.trim();
+    if (val) savedVideos[name] = val;
+  });
+  localStorage.setItem('repnoxx_videos', JSON.stringify(savedVideos));
+  Object.assign(videoMap, savedVideos);
+  alert('Changes saved successfully!');
+}
+
+function adminResetPw() {
+  var oldPw = document.getElementById('adminOldPw').value;
+  var newPw = document.getElementById('adminNewPw').value;
+  var msg = document.getElementById('adminPwMsg');
+  if (oldPw !== adminPw) { msg.style.color = '#ff4444'; msg.textContent = 'Incorrect old password'; return; }
+  if (newPw.length < 3) { msg.style.color = '#ff4444'; msg.textContent = 'Password too short'; return; }
+  adminPw = newPw;
+  localStorage.setItem('repnoxx_admin_pw', newPw);
+  msg.style.color = '#00d4ff'; msg.textContent = 'Password reset successful';
+  document.getElementById('adminOldPw').value = '';
+  document.getElementById('adminNewPw').value = '';
+}
+
+// ========== NAV ==========
+function toggleMobile() {
+  document.getElementById('mobileMenu').classList.toggle('active');
+}
+
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  if (window.scrollY > 100) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// ========== HERO COUNTER ==========
+function animateCounters() {
+  document.querySelectorAll('.hero-stat-num').forEach(function(el) {
+    var target = parseInt(el.dataset.count), current = 0, step = Math.ceil(target / 40);
+    var interval = setInterval(function() {
+      current += step;
+      if (current >= target) { current = target; clearInterval(interval); }
+      el.textContent = current + '+';
+    }, 40);
+  });
+}
+
+// ========== SOUND EFFECTS ==========
+class SoundFX {
+  constructor() {
+    this.audioContext = null;
+    this.enabled = true;
+  }
+  
+  init() {
+    try {
+      this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    } catch(e) {
+      this.enabled = false;
+    }
+  }
+  
+  play(type) {
+    if (!this.enabled || !this.audioContext) return;
+    
+    const osc = this.audioContext.createOscillator();
+    const gain = this.audioContext.createGain();
+    osc.connect(gain);
+    gain.connect(this.audioContext.destination);
+    
+    const now = this.audioContext.currentTime;
+    
+    switch(type) {
+      case 'click':
+        osc.frequency.setValueAtTime(800, now);
+        osc.frequency.exponentialRampToValueAtTime(400, now + 0.1);
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+        osc.start(now);
+        osc.stop(now + 0.1);
+        break;
+        
+      case 'hover':
+        osc.frequency.setValueAtTime(600, now);
+        osc.frequency.exponentialRampToValueAtTime(800, now + 0.05);
+        gain.gain.setValueAtTime(0.05, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+        osc.start(now);
+        osc.stop(now + 0.05);
+        break;
+        
+      case 'success':
+        osc.frequency.setValueAtTime(523.25, now); // C5
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+        osc.start(now);
+        osc.stop(now + 0.15);
+        
+        setTimeout(() => {
+          const osc2 = this.audioContext.createOscillator();
+          const gain2 = this.audioContext.createGain();
+          osc2.connect(gain2);
+          gain2.connect(this.audioContext.destination);
+          osc2.frequency.setValueAtTime(659.25, this.audioContext.currentTime); // E5
+          gain2.gain.setValueAtTime(0.1, this.audioContext.currentTime);
+          gain2.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.15);
+          osc2.start(this.audioContext.currentTime);
+          osc2.stop(this.audioContext.currentTime + 0.15);
+        }, 100);
+        break;
+        
+      case 'tab':
+        osc.frequency.setValueAtTime(1000, now);
+        osc.frequency.exponentialRampToValueAtTime(1200, now + 0.03);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.03);
+        osc.start(now);
+        osc.stop(now + 0.03);
+        break;
+    }
+  }
+}
+
+const soundFX = new SoundFX();
+
+// ========== LOADING SCREEN ==========
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+    soundFX.init();
+  }, 1500);
+});
+
+// ========== SCROLL REVEAL ==========
+function handleScrollReveal() {
+  const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+  const windowHeight = window.innerHeight;
+  
+  reveals.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const elementVisible = 150;
+    
+    if (elementTop < windowHeight - elementVisible) {
+      el.classList.add('active');
+    }
+  });
+}
+
+// Stagger animation for grid items
+function handleStaggerAnimation() {
+  const grids = document.querySelectorAll('.exercise-grid, .meal-grid, .guide-grid');
+  
+  grids.forEach(grid => {
+    const items = grid.children;
+    const gridTop = grid.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    
+    if (gridTop < windowHeight - 100) {
+      Array.from(items).forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('stagger-item', 'active');
+        }, index * 80);
+      });
+    }
+  });
+}
+
+window.addEventListener('scroll', () => {
+  handleScrollReveal();
+  handleStaggerAnimation();
+});
+
+// Initial check
+setTimeout(() => {
+  handleScrollReveal();
+  handleStaggerAnimation();
+}, 100);
+
+// ========== PARALLAX EFFECT ==========
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) {
+    heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+  }
+});
+
+// ========== SOUND EFFECTS FOR INTERACTIONS ==========
+document.addEventListener('click', (e) => {
+  // Button clicks
+  if (e.target.closest('.btn') || e.target.closest('.tracker-btn') || e.target.closest('.tab') || e.target.closest('.diet-tab')) {
+    soundFX.play('click');
+  }
+  
+  // Video button clicks
+  if (e.target.closest('.video-btn')) {
+    soundFX.play('success');
+  }
+});
+
+document.addEventListener('mouseover', (e) => {
+  // Button hovers
+  if (e.target.closest('.btn') || e.target.closest('.tracker-btn')) {
+    soundFX.play('hover');
+  }
+});
+
+// Tab switch sounds
+const originalFilterGym = filterGym;
+filterGym = function(cat, el) {
+  soundFX.play('tab');
+  originalFilterGym(cat, el);
+  setTimeout(handleStaggerAnimation, 50);
+};
+
+const originalFilterHome = filterHome;
+filterHome = function(cat, el) {
+  soundFX.play('tab');
+  originalFilterHome(cat, el);
+  setTimeout(handleStaggerAnimation, 50);
+};
+
+const originalSwitchDiet = switchDiet;
+switchDiet = function(type, el) {
+  soundFX.play('tab');
+  originalSwitchDiet(type, el);
+};
+
+// Success sound for tracker
+const originalAddCalories = addCalories;
+addCalories = function() {
+  originalAddCalories();
+  soundFX.play('success');
+};
+
+const originalAddProtein = addProtein;
+addProtein = function() {
+  originalAddProtein();
+  soundFX.play('success');
+};
+
+// ========== PARTICLE ANIMATION ==========
+function initParticles() {
+  var canvas = document.getElementById('particleCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var particleCount = 60;
+  
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  function Particle() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.radius = Math.random() * 1.5 + 0.5;
+    this.opacity = Math.random() * 0.4 + 0.1;
+  }
+  
+  for (var i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+  
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 77, 0, ' + p.opacity + ')';
+      ctx.fill();
+      
+      // Draw connections
+      for (var j = i + 1; j < particles.length; j++) {
+        var p2 = particles[j];
+        var dx = p.x - p2.x;
+        var dy = p.y - p2.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = 'rgba(255, 77, 0, ' + (0.06 * (1 - dist / 120)) + ')';
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+}
+
+// ========== RIPPLE HOVER EFFECT ==========
+function initRippleEffect() {
+  document.querySelectorAll('.exercise-card, .meal-card, .guide-card, .tracker-card').forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      var x = ((e.clientX - rect.left) / rect.width * 100);
+      var y = ((e.clientY - rect.top) / rect.height * 100);
+      card.style.setProperty('--mx', x + '%');
+      card.style.setProperty('--my', y + '%');
+    });
+  });
+}
+
+// ========== INIT ==========
+function initApp() {
+  try {
+    updateTrackerUI();
+    renderGym('all');
+    renderHome('all');
+    renderDiet(vegDiet, 'vegGrid');
+    renderDiet(nonvegDiet, 'nonvegGrid');
+    renderDiet(cuttingDiet, 'cuttingGrid');
+    renderDiet(budgetDiet, 'budgetGrid');
+    animateCounters();
+    
+    // Trigger stagger animations after a short delay
+    setTimeout(() => {
+      handleStaggerAnimation();
+      handleScrollReveal();
+    }, 200);
+    
+    // Video button event delegation
+    document.addEventListener('click', function(e) {
+      var videoBtn = e.target.closest('.video-btn');
+      if (videoBtn) {
+        var name = videoBtn.getAttribute('data-name');
+        var query = videoBtn.getAttribute('data-query');
+        if (name) {
+          openVideo(name, query);
+        }
+      }
+    });
+    
+    console.log('RepNoxx initialized');
+    initParticles();
+    initRippleEffect();
+  } catch(e) {
+    console.error('Init error:', e);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+
+<!-- AI FITNESS CHATBOT -->
+<button class="chatbot-fab" id="chatbotFab" onclick="toggleChatbot()">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 1 4.28L2 22l5.72-1c1.28.64 2.74 1 4.28 1 5.52 0 10-4.48 10-10S17.52 2 12 2zm-1 14h-2v-2h2v2zm0-4h-2V8h2v4zm4 4h-2v-2h2v2zm0-4h-2V8h2v4z"/></svg>
+</button>
+<div class="chatbot-window" id="chatbotWindow">
+  <div class="chatbot-header">
+    <div class="chatbot-avatar">
+      <svg viewBox="0 0 24 24"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7s2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/></svg>
+    </div>
+    <div class="chatbot-header-info">
+      <h3>RepNoxx AI Coach</h3>
+      <p>Online — Ask anything about fitness</p>
+    </div>
+    <button class="chatbot-close" onclick="toggleChatbot()">&#10005;</button>
+  </div>
+  <div class="chatbot-messages" id="chatMessages"></div>
+  <div class="chatbot-quick" id="chatQuickBtns">
+    <button class="chat-quick-btn" onclick="sendQuickMsg('How to gain weight?')">Weight gain</button>
+    <button class="chat-quick-btn" onclick="sendQuickMsg('How to lose fat?')">Fat loss</button>
+    <button class="chat-quick-btn" onclick="sendQuickMsg('How much protein do I need?')">Protein</button>
+    <button class="chat-quick-btn" onclick="sendQuickMsg('Best supplements?')">Supplements</button>
+    <button class="chat-quick-btn" onclick="sendQuickMsg('Give me a workout plan')">Workout</button>
+    <button class="chat-quick-btn" onclick="sendQuickMsg('How to get abs?')">Abs</button>
+    <button class="chat-quick-btn" onclick="sendQuickMsg('Budget diet tips')">Budget diet</button>
+    <button class="chat-quick-btn" onclick="sendQuickMsg('Beginner guide')">Beginner</button>
+  </div>
+  <div class="chatbot-input-area">
+    <input type="text" class="chatbot-input" id="chatInput" placeholder="Kuch bhi pooch — diet, workout, supplements..." onkeydown="if(event.key==='Enter')sendChatMsg()">
+    <button class="chatbot-send" onclick="sendChatMsg()">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+// ========== AI FITNESS CHATBOT ENGINE ==========
+var chatbotOpen = false;
+var chatInitialized = false;
+
+function toggleChatbot() {
+  chatbotOpen = !chatbotOpen;
+  document.getElementById('chatbotWindow').classList.toggle('open', chatbotOpen);
+  document.getElementById('chatbotFab').classList.toggle('open', chatbotOpen);
+  if (chatbotOpen && !chatInitialized) {
+    chatInitialized = true;
+    setTimeout(function() {
+      addBotMessage("Hey bro! Main tera <strong>RepNoxx AI Coach</strong> hoon — evidence-based fitness assistant (ISSN, ACSM research pe based). Kuch bhi pooch:");
+      setTimeout(function() {
+        addBotMessage("<ul><li>Weight gain / muscle building</li><li>Fat loss / cutting</li><li>Protein & diet planning</li><li>Workout programming</li><li>Supplement advice</li><li>Abs, height, motivation, aur bahut kuch!</li></ul>Bata kya goal hai tera? 💪");
+      }, 600);
+    }, 400);
+  }
+}
+
+function addBotMessage(html) {
+  var container = document.getElementById('chatMessages');
+  var msg = document.createElement('div');
+  msg.className = 'chat-msg bot';
+  msg.innerHTML = html;
+  container.appendChild(msg);
+  container.scrollTop = container.scrollHeight;
+}
+
+function addUserMessage(text) {
+  var container = document.getElementById('chatMessages');
+  var msg = document.createElement('div');
+  msg.className = 'chat-msg user';
+  msg.textContent = text;
+  container.appendChild(msg);
+  container.scrollTop = container.scrollHeight;
+}
+
+function showTyping() {
+  var container = document.getElementById('chatMessages');
+  var typing = document.createElement('div');
+  typing.className = 'chat-typing';
+  typing.id = 'typingIndicator';
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  container.appendChild(typing);
+  container.scrollTop = container.scrollHeight;
+}
+
+function removeTyping() {
+  var t = document.getElementById('typingIndicator');
+  if (t) t.remove();
+}
+
+function sendQuickMsg(text) {
+  addUserMessage(text);
+  showTyping();
+  var delay = 800 + Math.random() * 800;
+  setTimeout(function() {
+    removeTyping();
+    var response = getAIResponse(text);
+    addBotMessage(response);
+  }, delay);
+}
+
+function sendChatMsg() {
+  var input = document.getElementById('chatInput');
+  var text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  addUserMessage(text);
+  showTyping();
+  var delay = 800 + Math.random() * 1000;
+  setTimeout(function() {
+    removeTyping();
+    var response = getAIResponse(text);
+    addBotMessage(response);
+  }, delay);
+}
+
+function getAIResponse(query) {
+  var q = query.toLowerCase();
+
+  // PROTEIN
+  if (q.match(/protein|how much protein|protein need|protein intake/)) {
+    return "Based on <strong>ISSN research (2017)</strong>:<br><br>" +
+      "<strong>Optimal protein:</strong> <span class='macro-hl'>1.6 - 2.2g per kg bodyweight/day</span><br><br>" +
+      "For example, if you weigh 70kg:<ul>" +
+      "<li>Minimum: 112g/day</li>" +
+      "<li>Optimal: 154g/day</li>" +
+      "<li>Split across 4-5 meals (30-40g each)</li></ul>" +
+      "<strong>Top Indian protein sources:</strong><ul>" +
+      "<li>Soya chunks: 52g/100g (cheapest!)</li>" +
+      "<li>Paneer: 18g/100g</li>" +
+      "<li>Chicken breast: 31g/100g</li>" +
+      "<li>Eggs: 6.3g each</li>" +
+      "<li>Moong dal: 24g/100g (raw)</li></ul>" +
+      "Pro tip: Total daily protein matters more than timing. The 'anabolic window' is actually 4-6 hours, not 30 minutes!";
+  }
+
+  // SUPPLEMENTS
+  if (q.match(/supplement|creatine|whey|bcaa|pre.?workout/)) {
+    return "<strong>Evidence-based supplements (ranked by science):</strong><br><br>" +
+      "<strong>Tier 1 — Strong Evidence:</strong><ul>" +
+      "<li><strong>Creatine Monohydrate</strong> — 3-5g/day. +5-10% strength. ₹500-800/250g (best value!)</li>" +
+      "<li><strong>Whey Protein</strong> — 20-40g post-workout. Hits protein target easily.</li>" +
+      "<li><strong>Caffeine</strong> — 3-6mg/kg, 30min before training. Black coffee works!</li></ul>" +
+      "<strong>Tier 2 — Worth it:</strong><ul>" +
+      "<li><strong>Vitamin D3</strong> — 1000-5000 IU/day. 70-80% Indians are deficient!</li>" +
+      "<li><strong>Omega-3 Fish Oil</strong> — 1-3g EPA+DHA/day for recovery</li>" +
+      "<li><strong>Ashwagandha KSM-66</strong> — 300-600mg. Indian herb, good for recovery + stress</li></ul>" +
+      "<strong>Save your money on:</strong> BCAAs (if protein is adequate), test boosters, fat burners, glutamine.";
+  }
+
+  // WORKOUT
+  if (q.match(/workout|training|exercise|split|routine|program/)) {
+    return "Here's a <strong>proven PPL split</strong> (Push/Pull/Legs):<br><br>" +
+      "<strong>Day 1 — Push (Chest/Shoulders/Triceps):</strong><ul>" +
+      "<li>Flat Bench Press: 4x8-10</li>" +
+      "<li>Incline DB Press: 4x10-12</li>" +
+      "<li>Overhead Press: 3x8-10</li>" +
+      "<li>Lateral Raises: 4x12-15</li>" +
+      "<li>Tricep Pushdown: 3x12</li></ul>" +
+      "<strong>Day 2 — Pull (Back/Biceps):</strong><ul>" +
+      "<li>Deadlift: 4x5-6</li>" +
+      "<li>Pull-Ups: 4x8-12</li>" +
+      "<li>Barbell Row: 4x8-10</li>" +
+      "<li>Face Pulls: 3x15-20</li>" +
+      "<li>Barbell Curl: 3x10</li></ul>" +
+      "<strong>Day 3 — Legs:</strong><ul>" +
+      "<li>Barbell Squat: 4x6-8</li>" +
+      "<li>Romanian Deadlift: 4x8-10</li>" +
+      "<li>Leg Press: 4x10-12</li>" +
+      "<li>Walking Lunges: 3x12/leg</li>" +
+      "<li>Calf Raises: 4x15-20</li></ul>" +
+      "Rest day after every 3 days. Progressive overload is KEY!";
+  }
+
+  // WEIGHT GAIN / BULKING (FIXED!)
+  if (q.match(/gain weight|wazan.*badha|weight badha|bulk up|muscle gain|build muscle|mota.*hon|mota.*kaise|skinny|patla|thin|underweight|mass gain|wazan|how to gain|kaise badha/)) {
+    return "<strong>Weight Gain / Muscle Building Guide:</strong><br><br>" +
+      "<span class='macro-hl'>300-500 kcal above TDEE = 0.25-0.5 kg gain/week</span><br><br>" +
+      "<strong>Step 1: Calculate your surplus:</strong><ul>" +
+      "<li>Find TDEE (BMR x activity level)</li>" +
+      "<li>Add 300-500 kcal/day (not more — dirty bulk = fat!)</li>" +
+      "<li>Example: TDEE 2500 → eat 2800-3000 kcal/day</li></ul>" +
+      "<strong>Step 2: Macros:</strong><ul>" +
+      "<li><strong>Protein:</strong> 1.6-2.2g/kg</li>" +
+      "<li><strong>Carbs:</strong> 4-6g/kg — rice, roti, oats, potato</li>" +
+      "<li><strong>Fats:</strong> 0.8-1g/kg — ghee, nuts, peanut butter</li></ul>" +
+      "<strong>Best calorie-dense Indian foods:</strong><ul>" +
+      "<li>Peanut butter: 588 kcal/100g</li>" +
+      "<li>Full cream milk: 65 kcal/100ml — drink 500ml-1L daily</li>" +
+      "<li>Ghee: 112 kcal/tbsp — add to everything</li>" +
+      "<li>Nuts: 600 kcal/100g</li>" +
+      "<li>Banana: 90 kcal each — eat 2-3/day</li>" +
+      "<li>Soya chunks: 345 kcal/100g + 52g protein</li></ul>" +
+      "<strong>Sample 3000 kcal day:</strong><ul>" +
+      "<li>Breakfast: 4 eggs + 4 toast + 2 banana + 300ml milk (850 kcal, 38g P)</li>" +
+      "<li>Snack: 100g oats + 30g PB + 200ml milk (620 kcal, 24g P)</li>" +
+      "<li>Lunch: 200g rice + 150g chicken + dal + 2 roti (750 kcal, 52g P)</li>" +
+      "<li>Pre: 2 banana + coffee (200 kcal)</li>" +
+      "<li>Post: Whey + banana (250 kcal, 30g P)</li>" +
+      "<li>Dinner: 200g rice + 150g paneer + roti (650 kcal, 35g P)</li>" +
+      "<li>Bed: 200ml milk + almonds (180 kcal, 10g P)</li></ul>" +
+      "<strong>Key:</strong> Progressive overload in gym. Sleep 8hrs. Eat even when not hungry. Check Budget diet tab!";
+  }
+
+  // WEIGHT LOSS / CUTTING (must come AFTER weight gain to avoid conflict)
+  if (q.match(/weight loss|lose weight|fat loss|cutting|lean|slim|patla hon|wazan kam|motapa|reduce fat/)) {
+    return "<strong>Weight Loss / Fat Loss Science:</strong><br><br>" +
+      "<span class='macro-hl'>500 kcal below TDEE = ~0.5 kg fat loss/week</span><br><br>" +
+      "<strong>Key rules:</strong><ul>" +
+      "<li>Protein: 2.0-2.4g/kg — preserves muscle in deficit</li>" +
+      "<li>Deficit: 300-500 kcal below TDEE (not more!)</li>" +
+      "<li>Strength training: 3-4x/week — keeps muscle</li>" +
+      "<li>Cardio: 2-3x/week (20-30 min) — optional but helps</li>" +
+      "<li>Sleep: 7-9 hours — poor sleep = more hunger</li></ul>" +
+      "<strong>Best fat loss foods:</strong><ul>" +
+      "<li>High protein: eggs, chicken, fish, paneer, soya, dal</li>" +
+      "<li>High volume: salads, soups, vegetables, buttermilk</li>" +
+      "<li>Complex carbs: oats, brown rice, roti</li></ul>" +
+      "<strong>AVOID:</strong><ul>" +
+      "<li>Sugar: sweets, soda, juice, packaged foods</li>" +
+      "<li>Refined: white bread, maida, pizza, biscuits</li>" +
+      "<li>Fried: samosa, pakora, chips</li>" +
+      "<li>Alcohol: empty calories</li>" +
+      "<li>Excess oil: limit to 3-4 tsp/day</li></ul>" +
+      "Check <strong>Weight Loss</strong> tab in diet section! Realistic goal: 2-3 kg/month.";
+  }
+
+  // BUDGET
+  if (q.match(/budget|cheap|affordable|sasta|kam.*paisa|money/)) {
+    return "<strong>Budget Protein Hacks (Indian context):</strong><br><br>" +
+      "Cost per gram of protein (cheapest first):<ul>" +
+      "<li><strong>Soya chunks</strong>: ₹0.2-0.3/g protein (WINNER!)</li>" +
+      "<li><strong>Peanuts</strong>: ₹0.3-0.5/g</li>" +
+      "<li><strong>Chana dal / Moong dal</strong>: ₹0.4-0.6/g</li>" +
+      "<li><strong>Roasted chana</strong>: ₹0.4-0.5/g</li>" +
+      "<li><strong>Chicken breast</strong>: ₹1.1-1.5/g</li>" +
+      "<li><strong>Eggs</strong>: ₹1.0-1.3/g</li>" +
+      "<li><strong>Paneer</strong>: ₹1.7-2.2/g</li></ul>" +
+      "<strong>Sample ₹100-150/day plan (~100g protein):</strong><ul>" +
+      "<li>Breakfast: Soya chunks upma + milk (32g, ₹27)</li>" +
+      "<li>Lunch: Dal + roti + peanuts (22g, ₹22)</li>" +
+      "<li>Snack: Roasted chana + banana (7g, ₹9)</li>" +
+      "<li>Dinner: Soya curry + roti + curd (32g, ₹26)</li>" +
+      "<li>Bed: Milk (7g, ₹12)</li></ul>" +
+      "Monthly cost: ₹2,500-3,500 for 80-100g protein/day!";
+  }
+
+  // PRE/POST WORKOUT
+  if (q.match(/before workout|pre.?workout|pre workout|before gym/)) {
+    return "<strong>Pre-Workout Nutrition (1-2 hours before):</strong><br><br>" +
+      "<ul><li><strong>Carbs:</strong> Banana + oats or 2 rotis — fuel your session</li>" +
+      "<li><strong>Caffeine:</strong> Black coffee 30min before = +2-5% performance</li>" +
+      "<li><strong>Hydration:</strong> 500ml water minimum</li></ul>" +
+      "<strong>Avoid:</strong> Heavy fats, too much fiber, new foods<br><br>" +
+      "<strong>Post-Workout (within 2 hours):</strong><ul>" +
+      "<li>20-40g whey protein (or sattu/eggs)</li>" +
+      "<li>Fast carbs: banana, rice, potato</li>" +
+      "<li>The 'anabolic window' is actually 4-6 hours, not 30 mins!</li></ul>" +
+      "Total daily protein > timing. Don't stress the exact minute!";
+  }
+
+  // MICRONUTRIENTS / VITAMINS
+  if (q.match(/vitamin|mineral|micronutrient|deficiency|iron|b12|zinc|omega/)) {
+    return "<strong>Critical Micronutrients (most Indians are deficient):</strong><br><br>" +
+      "<ul><li><strong>Vitamin D</strong> — 70-80% Indians deficient! Supplement 1000-5000 IU/day. Get 15-20 min sunlight.</li>" +
+      "<li><strong>Vitamin B12</strong> — 75% vegetarians deficient! Supplement 500-1000 mcg methylcobalamin/day.</li>" +
+      "<li><strong>Iron</strong> — Women especially at risk. Eat jaggery, spinach, rajma. Pair with vitamin C (lemon) for absorption.</li>" +
+      "<li><strong>Omega-3</strong> — Indian diets high in omega-6 (refined oils), low in omega-3. Fish 2x/week or supplement.</li>" +
+      "<li><strong>Magnesium</strong> — 400-600mg/day for athletes. Eat almonds, spinach, ragi, dark chocolate.</li>" +
+      "<li><strong>Zinc</strong> — Important for testosterone. Pumpkin seeds, chana, cashews, eggs.</li></ul>" +
+      "These affect energy, recovery, immunity, and muscle growth!";
+  }
+
+  // HOME WORKOUT
+  if (q.match(/home workout|no gym|without gym|bodyweight|ghar.*exercise/)) {
+    return "<strong>Effective Home Workout (no equipment):</strong><br><br>" +
+      "<strong>Full Body Circuit (3-4 rounds):</strong><ul>" +
+      "<li>Push-Ups: 4x15-25</li>" +
+      "<li>Bodyweight Squats: 4x20-30</li>" +
+      "<li>Bulgarian Split Squat: 3x12/leg</li>" +
+      "<li>Pike Push-Ups: 3x10-12 (shoulders)</li>" +
+      "<li>Plank: 3x45-60sec</li>" +
+      "<li>Burpees: 3x10-15</li>" +
+      "<li>Glute Bridge: 4x15-20</li></ul>" +
+      "<strong>Progression tips:</strong><ul>" +
+      "<li>Add reps or slow down the tempo</li>" +
+      "<li>Use backpack with books for weight</li>" +
+      "<li>Doorframe rows for back</li>" +
+      "<li>Towel curls for biceps</li></ul>" +
+      "Check the Home section for full exercise library with videos!";
+  }
+
+  // MEAL TIMING
+  if (q.match(/meal timing|when to eat|eating schedule|meal.*plan|diet plan/)) {
+    return "<strong>Optimal Meal Timing (per research):</strong><br><br>" +
+      "Spread protein across <strong>4-6 meals</strong>, every 3-5 hours:<ul>" +
+      "<li><strong>Meal 1 (7-8 AM):</strong> 30-40g protein — break the fast strong</li>" +
+      "<li><strong>Meal 2 (10-11 AM):</strong> 20-30g — keep MPS elevated</li>" +
+      "<li><strong>Meal 3 (1-2 PM):</strong> 30-40g — biggest meal</li>" +
+      "<li><strong>Pre-workout (4-5 PM):</strong> Carbs + light protein</li>" +
+      "<li><strong>Post-workout (7 PM):</strong> 30-40g whey/protein</li>" +
+      "<li><strong>Dinner (9 PM):</strong> 30-40g protein</li>" +
+      "<li><strong>Before bed:</strong> 20-30g casein (paneer/milk/curd)</li></ul>" +
+      "Key: <strong>Total daily protein > meal timing</strong>. But even distribution helps!";
+  }
+
+  // WATER / HYDRATION
+  if (q.match(/water|hydrat|drink/)) {
+    return "<strong>Hydration Guidelines:</strong><br><br>" +
+      "<ul><li><strong>Daily:</strong> 3-4 liters minimum (more in Indian heat!)</li>" +
+      "<li><strong>Pre-workout:</strong> 500ml, 2 hours before</li>" +
+      "<li><strong>During:</strong> 200-300ml every 15-20 min</li>" +
+      "<li><strong>Post-workout:</strong> 750ml per kg lost</li></ul>" +
+      "<strong>Electrolytes matter!</strong> In Indian heat, add:<ul>" +
+      "<li>Pinch of salt + lemon in water</li>" +
+      "<li>Coconut water post-workout</li>" +
+      "<li>ORS on heavy training days</li></ul>" +
+      "Dehydration of just 2% body weight = 10-20% performance drop!";
+  }
+
+  // SLEEP / RECOVERY
+  if (q.match(/sleep|recovery|rest|rest day/)) {
+    return "<strong>Recovery is where growth happens:</strong><br><br>" +
+      "<ul><li><strong>Sleep 7-9 hours</strong> — non-negotiable. Muscles repair during deep sleep.</li>" +
+      "<li><strong>Rest days:</strong> Minimum 1-2 per week. Overtraining kills gains.</li>" +
+      "<li><strong>Deload week:</strong> Every 6-8 weeks, reduce volume by 40-50%.</li></ul>" +
+      "<strong>Recovery boosters:</strong><ul>" +
+      "<li>Post-workout: banana + whey within 2 hours</li>" +
+      "<li>Magnesium before bed (improves sleep quality)</li>" +
+      "<li>Light walking on rest days (active recovery)</li>" +
+      "<li>Foam rolling / stretching 10 min daily</li>" +
+      "<li>Cold showers can reduce inflammation</li></ul>" +
+      "Remember: You don't grow in the gym. You grow in bed!";
+  }
+
+  // BMI / CALCULATOR
+  if (q.match(/bmi|calculate|tdee|calorie.*need|how many cal/)) {
+    return "<strong>Calculate your needs:</strong><br><br>" +
+      "<strong>TDEE (Total Daily Energy Expenditure):</strong><ul>" +
+      "<li>BMR x Activity Multiplier</li>" +
+      "<li>Sedentary: BMR x 1.2</li>" +
+      "<li>Moderate active: BMR x 1.55</li>" +
+      "<li>Very active: BMR x 1.725</li></ul>" +
+      "<strong>BMR (Mifflin-St Jeor):</strong><ul>" +
+      "<li>Men: 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5</li>" +
+      "<li>Women: 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161</li></ul>" +
+      "<strong>Then adjust:</strong><ul>" +
+      "<li>Lose fat: TDEE - 500 kcal</li>" +
+      "<li>Gain muscle: TDEE + 300 kcal</li>" +
+      "<li>Maintain: eat at TDEE</li></ul>" +
+      "Use the tracker section to track your daily intake!";
+  }
+
+  // ABS / SIX PACK
+  if (q.match(/abs|six pack|sixpack|belly fat|stomach|pet.*kam|core/)) {
+    return "<strong>Six Pack / Abs Guide:</strong><br><br>" +
+      "<span class='macro-hl'>Abs are made in the kitchen, revealed by low body fat</span><br><br>" +
+      "<strong>Key facts:</strong><ul>" +
+      "<li>Everyone has abs — they're just hidden under fat</li>" +
+      "<li>Men need 10-12% body fat, women 16-19% to see abs</li>" +
+      "<li>Spot reduction is a MYTH — can't lose fat from just belly</li>" +
+      "<li>Calorie deficit + strength training = fat loss everywhere</li></ul>" +
+      "<strong>Best ab exercises (3x/week):</strong><ul>" +
+      "<li>Hanging Leg Raises: 4x12-15</li>" +
+      "<li>Cable Woodchops: 3x12/side</li>" +
+      "<li>Ab Wheel Rollouts: 3x10-12</li>" +
+      "<li>Plank: 3x45-60sec</li>" +
+      "<li>Russian Twists: 3x20</li></ul>" +
+      "<strong>Diet for abs:</strong> High protein (2g/kg), calorie deficit 300-500 kcal, minimize sugar & alcohol. Patience — abs take 3-6 months!";
+  }
+
+  // HEIGHT
+  if (q.match(/height|lambu|tall|grow taller/)) {
+    return "<strong>Height Reality Check:</strong><br><br>" +
+      "Height is 60-80% genetic. Growth plates close at 18-21 years (men) and 16-18 years (women).<br><br>" +
+      "<strong>If still growing (under 20):</strong><ul>" +
+      "<li>Sleep 8-10 hours — HGH releases during deep sleep</li>" +
+      "<li>Protein: 1.6-2g/kg bodyweight</li>" +
+      "<li>Calcium + Vitamin D: milk, curd, sunlight (15 min/day)</li>" +
+      "<li>Avoid smoking & steroids — they stunt growth</li></ul>" +
+      "<strong>If plates closed:</strong><ul>" +
+      "<li>No exercise/supplement can increase height after that</li>" +
+      "<li>Focus on posture — good posture adds 1-2 inches visually</li>" +
+      "<li>Build muscle — proportionate body looks taller</li></ul>" +
+      "Don't waste money on 'height increase' pills — they're scams!";
+  }
+
+  // CARDIO
+  if (q.match(/cardio|running|jogging|treadmill|cycling|hiit/)) {
+    return "<strong>Cardio Guide:</strong><br><br>" +
+      "<strong>How much?</strong><ul>" +
+      "<li><strong>Fat loss:</strong> 3-5x/week, 20-40 min (plus strength training)</li>" +
+      "<li><strong>Heart health:</strong> 150 min moderate OR 75 min vigorous per week</li>" +
+      "<li><strong>Muscle gain:</strong> Minimal — 1-2x/week, 15-20 min</li></ul>" +
+      "<strong>Best types:</strong><ul>" +
+      "<li><strong>Walking:</strong> 8000-10000 steps/day. Easy, sustainable.</li>" +
+      "<li><strong>Running:</strong> Great for cardiovascular health.</li>" +
+      "<li><strong>Cycling:</strong> Low impact, good for legs.</li>" +
+      "<li><strong>Swimming:</strong> Full body, zero impact.</li>" +
+      "<li><strong>HIIT:</strong> 15-20 min, 2-3x/week max. Don't overdo!</li></ul>" +
+      "<strong>Myths busted:</strong><ul>" +
+      "<li>'Cardio kills gains' — FALSE. Moderate cardio is fine.</li>" +
+      "<li>'Fasted cardio burns more fat' — negligible difference.</li></ul>";
+  }
+
+  // STRETCHING / WARM-UP
+  if (q.match(/stretch|flexib|warm.?up|cool.?down|mobility/)) {
+    return "<strong>Stretching & Mobility:</strong><br><br>" +
+      "<strong>Pre-workout (5-10 min):</strong><ul>" +
+      "<li>Light cardio: 5 min jumping jacks, high knees</li>" +
+      "<li>Dynamic stretches: arm circles, leg swings</li>" +
+      "<li>Specific warm-up: 2-3 light sets of first exercise</li></ul>" +
+      "<strong>Post-workout (5-10 min):</strong><ul>" +
+      "<li>Static stretches: hold 20-30 sec each</li>" +
+      "<li>Focus on muscles trained</li>" +
+      "<li>Child's pose, cobra stretch, pigeon pose</li></ul>" +
+      "<strong>Daily mobility (10 min):</strong><ul>" +
+      "<li>World's greatest stretch (lunge with rotation)</li>" +
+      "<li>90/90 hip stretch</li>" +
+      "<li>Thoracic spine rotations</li>" +
+      "<li>Cat-cow, bird-dog</li></ul>" +
+      "<strong>Benefits:</strong> Reduces injury, improves range of motion, better posture, less soreness. Never skip warm-up!";
+  }
+
+  // INJURY / PAIN
+  if (q.match(/injury|pain|hurt|sore|ache|knee|back pain/)) {
+    return "<strong>Injury Prevention & Management:</strong><br><br>" +
+      "<strong>⚠️ IMPORTANT:</strong> Severe pain? See a doctor!<br><br>" +
+      "<strong>Common injuries & prevention:</strong><ul>" +
+      "<li><strong>Lower back:</strong> Brace core during squats/deadlifts. Don't round back.</li>" +
+      "<li><strong>Shoulders:</strong> Warm up properly. Face pulls for rear delts.</li>" +
+      "<li><strong>Knees:</strong> Proper squat form. Strengthen glutes.</li></ul>" +
+      "<strong>RICE protocol (acute injury):</strong><ul>" +
+      "<li><strong>R</strong>est — stop the activity</li>" +
+      "<li><strong>I</strong>ce — 15-20 min, 3-4x/day (first 48 hours)</li>" +
+      "<li><strong>C</strong>ompression — bandage</li>" +
+      "<li><strong>E</strong>levation — raise above heart</li></ul>" +
+      "<strong>Prevention:</strong><ul>" +
+      "<li>Warm up properly (5-10 min)</li>" +
+      "<li>Progressive overload — don't jump weights too fast</li>" +
+      "<li>Proper form > heavy weight</li>" +
+      "<li>Deload every 6-8 weeks</li></ul>";
+  }
+
+  // STEROIDS WARNING
+  if (q.match(/steroid|injection|sustanon|roids|gear/)) {
+    return "<strong>⚠️ STEROIDS — The Dark Side:</strong><br><br>" +
+      "Anabolic steroids are <strong>ILLEGAL without prescription</strong> and dangerous.<br><br>" +
+      "<strong>Side effects:</strong><ul>" +
+      "<li><strong>Heart:</strong> Enlarged heart, heart attack, stroke (even in 20s!)</li>" +
+      "<li><strong>Hormonal:</strong> Shutdown of natural testosterone, gynecomastia (man boobs), infertility</li>" +
+      "<li><strong>Liver:</strong> Liver damage, cancer</li>" +
+      "<li><strong>Mental:</strong> Rage, depression, addiction</li>" +
+      "<li><strong>Cosmetic:</strong> Acne, hair loss, stretch marks</li></ul>" +
+      "<strong>Reality:</strong><ul>" +
+      "<li>Natural lifters can build IMPRESSIVE physiques</li>" +
+      "<li>Steroid users lose most gains when they stop</li>" +
+      "<li>Instagram fitness influencers? 90% are on gear. Don't compare!</li></ul>" +
+      "<strong>Natural alternatives:</strong><ul>" +
+      "<li>Creatine (5g/day) — legal, safe, effective</li>" +
+      "<li>Proper nutrition (1.6-2.2g protein/kg)</li>" +
+      "<li>Consistent training (progressive overload)</li>" +
+      "<li>Sleep (7-9 hours)</li></ul>" +
+      "Your health > ego. Stay natural!";
+  }
+
+  // MOTIVATION
+  if (q.match(/motivat|lazy|consisten|discipline|give up|quit|depress|stress/)) {
+    return "<strong>Fitness Mindset & Motivation:</strong><br><br>" +
+      "<strong>Truth about motivation:</strong><ul>" +
+      "<li>Motivation is temporary — comes and goes</li>" +
+      "<li><strong>Discipline > Motivation</strong> — show up even when you don't feel like it</li></ul>" +
+      "<strong>Build consistency:</strong><ul>" +
+      "<li>Start small — 3 days/week, 30 min sessions</li>" +
+      "<li>Track progress — photos, measurements, weights</li>" +
+      "<li>Find a workout partner — accountability</li>" +
+      "<li>Set process goals (train 4x/week) not outcome goals</li></ul>" +
+      "<strong>Mental health benefits:</strong><ul>" +
+      "<li>Exercise reduces anxiety & depression</li>" +
+      "<li>Strength training boosts confidence</li>" +
+      "<li>Better sleep → better mood → more energy</li></ul>" +
+      "<strong>When you want to quit:</strong><ul>" +
+      "<li>Remember WHY you started</li>" +
+      "<li>Compare yourself to yesterday, not Instagram</li>" +
+      "<li>Bad workout > no workout</li>" +
+      "<li>Take a rest day, not a quit day</li></ul>" +
+      "You got this! Consistency beats intensity 💪";
+  }
+
+  // WOMEN'S FITNESS
+  if (q.match(/women|girl|female|ladies|period|menstrual/)) {
+    return "<strong>Women's Fitness Guide:</strong><br><br>" +
+      "<strong>Myths busted:</strong><ul>" +
+      "<li>'Weights make women bulky' — FALSE. Women have 1/10th the testosterone.</li>" +
+      "<li>'Spot reduction works' — FALSE.</li>" +
+      "<li>'Cardio is best for weight loss' — FALSE. Strength training burns more long-term.</li></ul>" +
+      "<strong>Best training:</strong><ul>" +
+      "<li><strong>Strength training 3-4x/week</strong> — builds lean muscle, boosts metabolism</li>" +
+      "<li>Compound movements: squats, deadlifts, hip thrusts, rows</li>" +
+      "<li>Glute-focused: hip thrusts, squats, lunges</li></ul>" +
+      "<strong>Period & training:</strong><ul>" +
+      "<li>Light-moderate exercise REDUCES cramps & mood swings</li>" +
+      "<li>Listen to your body — rest if needed, no guilt!</li></ul>" +
+      "<strong>Nutrition:</strong><ul>" +
+      "<li>Iron is CRITICAL — jaggery, spinach, rajma + vitamin C</li>" +
+      "<li>Calcium: 1000mg/day — milk, curd, ragi</li>" +
+      "<li>Don't under-eat! Very low calories = hormone disruption</li></ul>";
+  }
+
+  // SKINNY FAT / BODY TYPES
+  if (q.match(/skinny fat|skinnyfat|hard.?gainer|endomorph|ectomorph/)) {
+    return "<strong>Body Types & Solutions:</strong><br><br>" +
+      "<strong>Skinny Fat (most common):</strong><ul>" +
+      "<li>Problem: Low muscle + high body fat (belly)</li>" +
+      "<li>Solution: <strong>Body recomposition</strong> — gain muscle & lose fat</li>" +
+      "<li>How: Slight surplus (+200) + high protein (2g/kg) + heavy lifting</li>" +
+      "<li>Don't crash diet! You'll lose muscle & look worse</li>" +
+      "<li>Timeline: 6-12 months</li></ul>" +
+      "<strong>Hard Gainer (Ectomorph):</strong><ul>" +
+      "<li>Can't gain weight. Solution: Eat MORE than you think!</li>" +
+      "<li>Calorie surplus: +300-500 kcal/day</li>" +
+      "<li>Calorie-dense foods: nuts, PB, milk, rice, ghee</li></ul>" +
+      "<strong>Easy Gainer (Endomorph):</strong><ul>" +
+      "<li>Gains fat easily. Solution: Moderate deficit + high protein</li>" +
+      "<li>More cardio + strict diet</li></ul>" +
+      "Genetics load the gun, but lifestyle pulls the trigger!";
+  }
+
+  // HAIR / SKIN
+  if (q.match(/hair|skin|acne|beauty|glow/)) {
+    return "<strong>Fitness & Appearance:</strong><br><br>" +
+      "<strong>Hair health:</strong><ul>" +
+      "<li>Protein deficiency = hair fall. Need 1.6g/kg minimum!</li>" +
+      "<li>Biotin: eggs, nuts, sweet potato</li>" +
+      "<li>Iron deficiency = hair loss (especially women)</li>" +
+      "<li>Zinc: pumpkin seeds, eggs, meat</li></ul>" +
+      "<strong>Skin health:</strong><ul>" +
+      "<li>Exercise = better blood flow = glowing skin!</li>" +
+      "<li>Water: 3-4 liters/day</li>" +
+      "<li>Vitamin C: amla, oranges — collagen production</li>" +
+      "<li>Sleep: 7-9 hours. 'Beauty sleep' is real!</li></ul>" +
+      "<strong>Acne & fitness:</strong><ul>" +
+      "<li>Whey may trigger acne — switch to plant protein if needed</li>" +
+      "<li>Shower immediately after workout</li>" +
+      "<li>High glycemic foods worsen acne</li></ul>";
+  }
+
+  // BEGINNER
+  if (q.match(/beginner|start|newbie|first time|shuruaat|kaise.*start/)) {
+    return "<strong>Beginner's Guide:</strong><br><br>" +
+      "<strong>Week 1-4: Foundation</strong><ul>" +
+      "<li>Train 3 days/week (Full Body each session)</li>" +
+      "<li>Focus on FORM, not weight</li>" +
+      "<li>Exercises: Squat, Push-ups, Rows, Lunges, Plank</li></ul>" +
+      "<strong>Week 5-12: Build the habit</strong><ul>" +
+      "<li>Progressive overload — add weight/reps weekly</li>" +
+      "<li>Split: Upper/Lower 4x/week or PPL 6x/week</li>" +
+      "<li>Track workouts (notebook or app)</li></ul>" +
+      "<strong>Nutrition basics:</strong><ul>" +
+      "<li>Protein: 1.6-2g/kg (eggs, chicken, dal, paneer)</li>" +
+      "<li>Carbs: rice, roti, oats (fuel for training)</li>" +
+      "<li>Fats: nuts, ghee, oils (hormones)</li>" +
+      "<li>Water: 3-4 liters/day</li></ul>" +
+      "<strong>Key mindset:</strong><ul>" +
+      "<li>Consistency > perfection</li>" +
+      "<li>Progress is slow — 0.5 kg/month is normal</li>" +
+      "<li>Don't compare to Instagram (90% are on gear)</li>" +
+      "<li>Rest days are when you grow!</li></ul>" +
+      "Check the <strong>Gym</strong> section for exercise library with videos!";
+  }
+
+  // DEFAULT / GREETING
+  if (q.match(/hi|hello|hey|sup|kya.*hal|namaste/)) {
+    return "Hey bro! Main tera AI fitness coach hoon. Kuch bhi pooch — diet, workout, supplements, weight loss/gain, sab kuch! Bata kya goal hai tera?";
+  }
+
+  // DEFAULT FALLBACK
+  return "Main almost sab kuch bata sakta hoon — fitness, nutrition, supplements, workout, weight loss/gain, abs, height, motivation, steroids ke side effects, women's fitness, injury prevention, stretching, sleep, hydration, vitamins — KUCH BHI!<br><br>" +
+    "Try asking:<ul>" +
+    "<li><strong>\"How to gain weight?\"</strong> — weight gain guide</li>" +
+    "<li><strong>\"How to lose fat?\"</strong> — fat loss science</li>" +
+    "<li><strong>\"How much protein?\"</strong> — protein targets</li>" +
+    "<li><strong>\"Best supplements?\"</strong> — evidence-based list</li>" +
+    "<li><strong>\"Give me workout plan\"</strong> — PPL/Upper-Lower splits</li>" +
+    "<li><strong>\"How to get abs?\"</strong> — abs guide</li>" +
+    "<li><strong>\"Budget diet?\"</strong> — cheap protein sources</li>" +
+    "<li><strong>\"Beginner guide?\"</strong> — where to start</li>" +
+    "<li><strong>\"Motivation nahi hai\"</strong> — mindset tips</li></ul>" +
+    "Kuch bhi pooch, main jawab dunga!";
+}
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"75124c326cb447fe934cde04713ae013","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
